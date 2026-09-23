@@ -37,9 +37,14 @@ Pages: landing, class schedule (read-only), trainer profiles, pricing tiers.
 
 ## Completed Tasks This Phase
 - Branding direction selected: FORM, warm ivory, charcoal, burnt orange, stone.
+- Documented the landing-page layout and three-task implementation plan.
+- Configured React, TypeScript, Vite, Tailwind, ESLint, and a dependency lockfile.
+- Implemented the responsive landing page, mobile navigation, category filters, trainer introductions, and sample membership tiers.
+- Verified production build, TypeScript, lint, local imagery, responsive layout, and keyboard interactions.
 
 ## Issues Found & Fixed
-- [log as you go]
+- Replaced the unsupported initial ESLint 9 dependency with compatible ESLint 10 tooling.
+- Fixed an earlier state-file typo that had listed a branding decision as a blocker.
 
 ## Blockers
 - None.
@@ -56,8 +61,8 @@ booking state, implement book/cancel against real endpoints.
 - Editor: VS Code
 - No OpenAI branding, watermarks, or co-author attribution.
 - Brand guide: project-docs/branding/BRAND.md; vector assets and tokens: frontend/public/brand/.
-- Branding assets prepared; full Phase 1 implementation has not started.
-- Next session: review branding, discuss static page layout, and plan the frontend scaffold.
+- Branding assets and the first landing-page implementation are complete; Phase 1 remains in progress.
+- Next session: review the landing page together, then discuss the dedicated class schedule page.
 - Backend framework, database, and hosting remain undecided.
 
 
@@ -66,4 +71,18 @@ booking state, implement book/cancel against real endpoints.
 - Frontend code and runtime assets live in frontend/.
 - Backend folder deferred until Phase 2.
 - Resume sessions from project-docs/STATE.md; this location supersedes the earlier root STATE.md convention.
+
+
+## Completed Chunk — Landing Page and Frontend Setup
+- Goal: implement the FORM landing page and configure React, TypeScript, Tailwind, and Vite.
+- Working layout: large headline above a wide training photograph; classes, trainers, membership, footer.
+- Plan: project-docs/plans/phase-1-landing-plan.md.
+- Decisions: project-docs/discussions/2026-09-23-landing-layout.md.
+- Constraints: static mock data; no backend, auth, payments, or booking mutations; keep documents separate from frontend/.
+- Verification: project-docs/verification/landing-checks.md, with desktop and mobile screenshots in the same folder.
+- Local setup: project-docs/FRONTEND-SETUP.md.
+- Next chunk: dedicated read-only class schedule, followed by trainer and pricing pages; retain the Phase 1 goal until all pages are complete.
+
+## Last Completed Phase
+- None. Phase 1 is still open; branding and the landing-page/setup chunk are complete.
 
