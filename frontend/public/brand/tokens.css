@@ -1,10 +1,11 @@
 :root {
-  --form-ivory: #f4f0e8;
-  --form-charcoal: #242522;
-  --form-orange: #c65d3b;
-  --form-stone: #c8c0b4;
-  --form-action: #a74327;
+  --form-ivory: #fff9ed;
+  --form-charcoal: #202320;
+  --form-orange: #ff7446;
+  --form-sky: #a8d8f0;
+  --form-yellow: #f1e7a1;
   --form-background: var(--form-ivory);
   --form-text: var(--form-charcoal);
-  --form-font: "Arial", "Helvetica Neue", sans-serif;
+  --form-font: "DM Sans", Arial, sans-serif;
+  --form-display-font: "Barlow Condensed", Impact, sans-serif;
 }

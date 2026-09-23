@@ -1,21 +1,19 @@
-import { useState } from 'react'
 import { categories, classes } from '../data/content'
 import type { Category } from '../data/content'
 
-export function ClassSchedule() {
-  const [category, setCategory] = useState<Category>('All classes')
+export function ClassSchedule({ category, onSelectCategory }: { category: Category; onSelectCategory: (category: Category) => void }) {
   const visibleClasses = classes.filter((item) => category === 'All classes' || item.category === category)
 
   return (
-    <section id="classes" className="page-width section-space" aria-labelledby="classes-title">
+    <section id="schedule" className="page-width schedule-section" aria-labelledby="classes-title">
       <div className="section-intro">
-        <h2 id="classes-title">Make room<br />for movement.</h2>
-        <p>Find your pace, try something new, or come back to what you love. There’s a place for you here.</p>
+        <h2 id="classes-title">A WEEK IN MOTION.</h2>
+        <p>A little preview of your next routine.</p>
       </div>
       <div className="schedule-toolbar">
         <div className="class-filters" role="group" aria-label="Filter classes by category">
           {categories.map((item) => (
-            <button key={item} onClick={() => setCategory(item)} aria-pressed={category === item} className="filter-button">{item}</button>
+            <button key={item} onClick={() => onSelectCategory(item)} aria-pressed={category === item} className="filter-button">{item}</button>
           ))}
         </div>
         <span className="schedule-note">A sample week at FORM</span>

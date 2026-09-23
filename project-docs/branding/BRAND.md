@@ -1,39 +1,39 @@
-# FORM brand guide
+# FORM — current brand direction
 
-Status: initial vector interpretation of the approved visual direction.
+Updated 2026-09-23 after the user approved the expressive illustrated redesign. This supersedes the initial muted photographic direction; the original concept board remains a historical reference.
 
-FORM is a modern, welcoming gym brand: confident, warm, and community-focused.
-Primary line: **Find your form.** Supporting line: **Strength. Movement. Community.**
+## Identity
 
-## Logo
+FORM is a welcoming, energetic fitness club. Primary line: **Find your form.** The outlined FORM wordmark remains the logo. Use the light wordmark on ink and the dark wordmark on light surfaces. Keep clear space around it; never distort the lettering.
 
-Use `frontend/public/brand/form-wordmark-dark.svg` on ivory and the light variant on charcoal. These are original outlined vector shapes, without font dependencies. The open cut in the R supplies the distinctive detail. Use `form-icon.svg` for the favicon and compact app mark. Keep at least one logo stroke of clear space around the mark. Suggested minimum wordmark width: 112 px. Never stretch, add shadows, or recolour individual letters.
+## Palette
 
-## Colour
-
-| Token | Hex | Use |
+| Colour | Hex | Role |
 | --- | --- | --- |
-| Ivory | #F4F0E8 | Main backgrounds |
-| Charcoal | #242522 | Text and dark panels |
-| Burnt orange | #C65D3B | Accents and decorative details |
-| Stone | #C8C0B4 | Dividers and secondary surfaces |
-| Action orange | #A74327 | Buttons with ivory text; links on ivory |
+| Ink | #202320 | Hero, footer, text |
+| Warm white | #FFF9ED | Main background, light text |
+| Orange | #FF7446 | Main actions and strength content |
+| Sky blue | #A8D8F0 | Community and conditioning content |
+| Pale yellow | #F1E7A1 | Mobility and highlighted membership |
 
-Use charcoal on ivory for body text. Burnt orange and stone are not default small-text colours. Action orange is a darker functional companion to the brand accent. Check contrast when adding new combinations.
+Use ink text on the bright colours; do not use white small text on orange. Runtime theme: `frontend/src/styles.css`. Reference tokens: `frontend/public/brand/tokens.css`. Keep them in sync.
 
-## Typography
+## Type
 
-Start with the system stack in `frontend/public/brand/tokens.css`: Arial, Helvetica Neue, sans-serif. Use bold, tightly spaced headings and regular, generously spaced body copy. Logo lettering is independent of this stack. A licensed webfont can be selected during page design.
+Barlow Condensed 800 is the athletic display face. DM Sans 400–700 is used for body copy and controls. Fonts are self-hosted through Fontsource. Their OFL licenses are retained in `project-docs/licenses/`. Use expressive scale for major headings while keeping navigation and explanations readable.
 
-## Photography and voice
+## Imagery and shapes
 
-Natural light, warm concrete, authentic training, varied bodies and shared progress. Balance strength, mobility, and group classes. Write direct, encouraging copy: “Explore classes”, “Meet your trainers”, “Find your form.” Avoid pressure, body shaming, and exaggerated results.
+The hero uses original illustrated adults training and resting together. Weight plates, running-track curves, and simple movement graphics make the direction specific to fitness. The earlier training photograph is retained in the community section. Trainer names and biographies remain fictional placeholder content.
 
-## Concept reference
+## Motion
 
-`project-docs/branding/form-brand-concept.png` is a moodboard only. Its incidental slogans and tiny mockup text are not approved production copy. The SVG files are the reusable logo assets.
+Desktop hero: a modest scroll-linked scale and vertical offset. First-session steps: staggered entry when the section appears. Cards and buttons: brief interaction feedback. The class rail supports scrolling, keyboard arrows, and previous/next buttons. Reduced-motion mode removes animation and smooth scrolling; mobile uses a static hero.
 
-## Working conventions
+## Inspiration boundary
 
-Project location: C:\Users\brigh\Desktop\Projects\gym-booking. Editor: VS Code. Do not add OpenAI branding, watermarks, or co-author attribution to assets, documentation, or commits.
+Cardtonic Upskill informed the broad ideas of expressive display type, illustration, colour blocks, and scroll interaction. FORM uses its own artwork, layout, visual motifs, copy, colours, and timing. No reference-site source files or artwork are part of the app.
 
+## Project conventions
+
+VS Code project: `C:\Users\brigh\Desktop\Projects\gym-booking`. Code and runtime assets live in `frontend/`; documentation lives in `project-docs/`. No added OpenAI branding, watermarks, or co-author credits.

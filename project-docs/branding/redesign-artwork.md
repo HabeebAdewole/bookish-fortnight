@@ -1,0 +1,9 @@
+# Illustrated hero
+
+File: `frontend/public/images/form-movement-illustration.png` (1536 × 1024, alpha transparency).
+
+Created with the built-in image-generation tool for the fictional FORM gym. This is original project artwork, not an asset downloaded from the reference website. The earlier photographic asset remains in the community section.
+
+## Final generation prompt
+
+Use case: illustration-story. Create an original premium editorial illustration for FORM, a playful adult fitness club website. Isolated on a genuinely transparent background, wide landscape composition 3:2. Three diverse adult humans, distinct human anatomy and expressive hand-drawn faces, in a lively connected gym scene: left a Black woman with tied-back curly hair in vivid orange training clothes confidently holding a kettlebell; middle a person with short hair in warm cream and sky-blue athletic clothes stretching with arms raised; right a dark-haired man in charcoal shorts and sky-blue shirt seated on an orange exercise box with one dumbbell resting safely near his foot. Hand-drawn ink outlines, bold flat colour areas, slightly irregular edges, subtle screenprinted texture, contemporary independent sports magazine art with friendly proportions, believable anatomy, no white-faced cartoon mascots or oversized hands. Include original graphic oversized weight plates, an arcing running-track line on the floor and a few small movement marks to connect figures; limited palette charcoal #202320, warm white #FFF9ED, orange #FF7446, sky blue #A8D8F0. High-contrast drawing designed to sit on charcoal background. Dynamic asymmetrical composition, complete figures and objects not cropped, no background rectangle or room, no photorealism, no lettering, no text, no logos, no watermark. Do not imitate any existing character. Crisp production-ready transparent artwork.

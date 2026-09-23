@@ -86,3 +86,25 @@ booking state, implement book/cancel against real endpoints.
 ## Last Completed Phase
 - None. Phase 1 is still open; branding and the landing-page/setup chunk are complete.
 
+
+## Design Direction Change — 2026-09-23
+- User rejected the current landing-page appearance and requested inspiration from Cardtonic Upskill, without copying its work.
+- Dedicated-page work is deferred while the FORM landing-page direction is revised.
+- Reference review and proposed translation: project-docs/discussions/2026-09-23-design-reference-review.md.
+- The user subsequently approved the bolder palette, original illustration, typography, and motion changes; implemented in the redesign chunk below.
+
+
+## Completed Chunk — Expressive Landing Redesign
+- User approved the bolder palette and illustrated direction on 2026-09-23.
+- Palette: ink charcoal #202320, warm white #FFF9ED, brighter orange #FF7446, sky blue #A8D8F0, pale yellow #F1E7A1.
+- Preserve the FORM name and wordmark. Use original fitness artwork and athletic display typography.
+- Three tasks: plan and visual system; implement responsive page and motion; verify and commit.
+- Keep classes and memberships static. Existing schedule filtering and keyboard support must continue working.
+- Plan: project-docs/plans/phase-1-redesign-plan.md.
+
+
+- Completed: original illustrated hero, locally hosted fonts, class carousel, first-session guide, updated brand assets and membership styling.
+- Verified: production build, lint, 24 browser assertions, and responsive screenshots. Details: project-docs/verification/redesign-checks.md.
+- Fixed during review: hero artwork spacing, carousel start-edge detection, and class-card category selection.
+- Next action: user visual review of the redesigned landing page, then plan the dedicated read-only schedule page. Phase 1 remains open.
+

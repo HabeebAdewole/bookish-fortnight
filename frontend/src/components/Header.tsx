@@ -10,14 +10,15 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="site-header page-width">
+    <header className="site-header">
+      <div className="header-inner page-width">
       <a href="#home" aria-label="FORM home" onClick={() => setMenuOpen(false)}>
-        <img className="header-logo" src="/brand/form-wordmark-dark.svg" alt="FORM" width="464" height="132" />
+        <img className="header-logo" src="/brand/form-wordmark-light.svg" alt="FORM" width="464" height="132" />
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
         {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
       </nav>
-      <a className="button button-dark header-action" href="#classes">Explore classes</a>
+      <a className="button button-orange header-action" href="#classes">Find your class <span aria-hidden="true">↗</span></a>
       <button
         className="menu-toggle"
         aria-expanded={menuOpen}
@@ -42,6 +43,7 @@ export function Header() {
       >
         {links.map((link) => <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>)}
       </nav>
+      </div>
     </header>
   )
 }

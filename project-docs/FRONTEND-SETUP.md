@@ -37,3 +37,10 @@ The CSS theme mirrors the brand reference tokens; keep both in sync when changin
 React and TypeScript run through Vite. Tailwind uses the Vite plugin and the CSS-first theme configuration. Node 24.12.0 was available during setup; use Node 22.12 or newer. Dependency versions are locked in `frontend/package-lock.json`.
 
 Official references: [Vite](https://vite.dev/guide/) and [Tailwind with Vite](https://tailwindcss.com/docs/installation/using-vite).
+
+## Expressive redesign
+- frontend/src/components/ClassDiscovery.tsx: native horizontal class carousel and schedule-category links.
+- frontend/src/components/Motion.tsx: desktop hero scroll effect and first-session guide.
+- Self-hosted Barlow Condensed and DM Sans fonts are imported in main.tsx; licenses live in project-docs/licenses/.
+- After pulling this change, run npm ci from frontend/ to install the new font dependencies, then npm run dev.
+
