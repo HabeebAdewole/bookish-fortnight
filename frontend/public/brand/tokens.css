@@ -1,0 +1,10 @@
+:root {
+  --form-ivory: #f4f0e8;
+  --form-charcoal: #242522;
+  --form-orange: #c65d3b;
+  --form-stone: #c8c0b4;
+  --form-action: #a74327;
+  --form-background: var(--form-ivory);
+  --form-text: var(--form-charcoal);
+  --form-font: "Arial", "Helvetica Neue", sans-serif;
+}
