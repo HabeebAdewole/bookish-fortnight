@@ -17,15 +17,14 @@ applications (DotLabs, Trimble).
 - Deploy: TBD — decide when ready to ship
 
 ## Phase Progress
-- [ ] Phase 1: Static shell (landing page, class schedule grid, trainer profiles, pricing — mock data)  ← YOU ARE HERE
+- [x] Phase 1: Static shell (landing, read-only schedule, trainer profiles, pricing — mock data) — completed 2026-09-24
 - [ ] Phase 2: Real data + booking (own backend API, Redux Toolkit booking state)
 - [ ] Phase 3: Auth + member dashboard (JWT, protected routes, my bookings, cancel booking)
 - [ ] Phase 4: Admin dashboard (server-side pagination, Recharts attendance/growth charts, class CRUD)
 - [ ] Phase 5: Tests + polish (Jest/RTL on booking logic, loading/error states, responsive pass, deploy)
 
 ## Current Phase Goal
-Phase 1 — build a fully static, deployable shell with mock/hardcoded data. No auth, no real API yet.
-Pages: landing, class schedule (read-only), trainer profiles, pricing tiers.
+None active. Phase 1 is complete. Next: Phase 2 DISCUSS for backend/API and booking integration.
 
 ## Key Decisions Made
 - Backend: own API, not a BaaS — full control over auth and data modelling
@@ -36,7 +35,7 @@ Pages: landing, class schedule (read-only), trainer profiles, pricing tiers.
   Booking (user + class + date, status: booked/cancelled/attended), Membership (tier, price, dates, active)
 
 ## Completed Tasks This Phase
-- Branding direction selected: FORM, warm ivory, charcoal, burnt orange, stone.
+- Current branding: FORM, monochrome photographic/video-led design with restrained orange accents; prior palette choices below are historical.
 - Documented the landing-page layout and three-task implementation plan.
 - Configured React, TypeScript, Vite, Tailwind, ESLint, and a dependency lockfile.
 - Implemented the responsive landing page, mobile navigation, category filters, trainer introductions, and sample membership tiers.
@@ -84,7 +83,7 @@ booking state, implement book/cancel against real endpoints.
 - Next chunk: dedicated read-only class schedule, followed by trainer and pricing pages; retain the Phase 1 goal until all pages are complete.
 
 ## Last Completed Phase
-- None. Phase 1 is still open; branding and the landing-page/setup chunk are complete.
+- Phase 1 — static shell, completed 2026-09-24. Final verification: project-docs/verification/phase-1-final-review.md.
 
 
 ## Design Direction Change — 2026-09-23
@@ -177,3 +176,12 @@ booking state, implement book/cancel against real endpoints.
 - Verification: project-docs/verification/membership-checks.md. All three tasks in project-docs/plans/phase-1-membership-plan.md complete.
 - Landing, schedule, coaching directory/profiles and membership pages are implemented. Phase 1 remains open pending final full-site static-shell review. Backend/auth/real bookings remain deferred.
 - Next action: final navigation, content consistency, responsiveness and static build review, then close Phase 1 if all checks pass.
+
+
+## Phase 1 Closed — 2026-09-24
+- Completed the seven-page static shell and final production-build review. Phase status and Current Phase Goal above are authoritative; earlier entries are historical.
+- Verified 160 rendered link targets, 28 route/viewport combinations, all local page media and fourteen interaction checks against dist output; build/TypeScript/lint passed. No runtime errors or failed local asset responses in the route sweep.
+- Fixed home skip-link focus, eight-session plan wording and dynamic reduced-motion poster visibility.
+- Final evidence: project-docs/verification/phase-1-final-review.md. Review plan: project-docs/plans/phase-1-final-review-plan.md, all tasks complete.
+- Next Phase Preview: discuss backend/database choices, API contracts, dated sessions/capacity and booking rules before implementing Phase 2.
+- Not deployed. Backend/auth/real booking remain unimplemented; no live purchase or membership claims.

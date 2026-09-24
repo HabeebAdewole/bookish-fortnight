@@ -19,7 +19,7 @@ function Home() {
       <a className="skip-link" href="#main">Skip to content</a>
       <div id="home">
         <Header />
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <section className="training-hero" aria-labelledby="hero-title">
             <HeroVideo name="home" />
             <div className="hero-shade" />
@@ -46,7 +46,7 @@ function Home() {
 
           <section id="club" className="club-section section-space page-width" aria-labelledby="club-title"><div className="section-intro"><div><p className="section-caption">The training floor</p><h2 id="club-title">SPACE TO<br />PUT IN THE WORK.</h2></div><p>Free weights. Room to move. Space to reset. A considered environment for every part of your session.</p></div><PhotoCarousel slides={galleries.club} label="The club" className="club-gallery" /><div className="club-bottom"><p>A look at the spaces that inspire FORM.<br /><span>Stock imagery for our concept club.</span></p></div><div className="club-inline-film" aria-label="A look around a gym floor"><HeroVideo name="club" source="/images/stock/club-film.mp4" poster="/images/stock/club-film.jpg" /></div></section>
 
-          <section id="membership" className="membership-section section-space" aria-labelledby="membership-title"><div className="page-width"><div className="section-intro"><h2 id="membership-title">COMMIT TO<br />YOUR TRAINING.</h2><p>Choose the number of coached sessions that fits your week.<br /><span className="sample-note">Sample monthly plans. Bookings are not open.</span></p></div><div className="membership-grid">{memberships.map(plan => <article className={`membership-plan ${plan.featured ? 'membership-featured' : ''}`} key={plan.name}><div className="plan-heading"><h3>{plan.name}</h3>{plan.featured && <span>Train twice a week</span>}</div><p className="plan-price">₦{plan.price}<span> / month</span></p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><a className="button" href="#/membership">Compare memberships</a></article>)}</div></div></section>
+          <section id="membership" className="membership-section section-space" aria-labelledby="membership-title"><div className="page-width"><div className="section-intro"><h2 id="membership-title">COMMIT TO<br />YOUR TRAINING.</h2><p>Choose the number of coached sessions that fits your week.<br /><span className="sample-note">Sample monthly plans. Bookings are not open.</span></p></div><div className="membership-grid">{memberships.map(plan => <article className={`membership-plan ${plan.featured ? 'membership-featured' : ''}`} key={plan.name}><div className="plan-heading"><h3>{plan.name}</h3>{plan.featured && <span>8 coached sessions per month</span>}</div><p className="plan-price">₦{plan.price}<span> / month</span></p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><a className="button" href="#/membership">Compare memberships</a></article>)}</div></div></section>
 
           <section className="closing-section page-width"><h2>YOUR NEXT REP<br />STARTS HERE.</h2><a className="button button-dark" href="#/classes">Find your session</a></section>
         </main>
