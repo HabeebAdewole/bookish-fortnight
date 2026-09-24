@@ -211,3 +211,67 @@ body:has(.class-dialog[open]) { overflow: hidden; }
   .related-sessions { grid-template-columns: 1fr; gap: 15px; }
   .related-sessions > a { padding: 23px; }
 }
+
+/* Moving media */
+.hero-video { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: #101112; }
+.hero-video .video-poster, .hero-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-video video { opacity: 0; transition: opacity .6s; }
+.hero-video video.video-ready { opacity: 1; }
+.hero-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #000b, #0005 62%, #0003); pointer-events: none; }
+.media-control { border: 1px solid #ffffff80; background: #101112a8; color: white; min-height: 42px; padding: 10px 16px; font-size: 12px; display: flex; align-items: center; gap: 12px; }
+.video-control { position: absolute; z-index: 5; right: 28px; bottom: 26px; }
+.video-control:hover { background: #101112; }
+.video-control:disabled { cursor: default; }
+.training-hero .hero-shade { display: none; }
+.training-hero .hero-content, .training-hero .hero-bottom { position: relative; z-index: 1; pointer-events: none; }
+.training-hero .hero-content a, .training-hero .hero-bottom a { pointer-events: auto; }
+.training-hero .hero-bottom { position: absolute; padding-right: 180px; }
+.film-banner { display: block; position: relative; isolation: isolate; min-height: 420px; }
+.film-banner > .page-width { position: relative; z-index: 1; width: min(1320px, calc(100% - 112px)); margin-inline: auto; padding: 58px 0 76px; pointer-events: none; }
+.coaches-film-hero { position: relative; isolation: isolate; background: #101112; color: #fff; margin-bottom: 64px; }
+.coaches-film-hero .coaches-intro { position: relative; z-index: 1; padding-block: 80px 100px; pointer-events: none; }
+.coaches-film-hero .coaches-intro > div { align-items: flex-start; flex-direction: column; gap: 25px; }
+.coaches-film-hero .coaches-intro > div > p { color: #e3e7e4; max-width: 440px; }
+.profile-film-hero { position: relative; display: block; isolation: isolate; background: #101112; color: #fff; }
+.profile-film-hero .profile-heading { position: relative; z-index: 1; pointer-events: none; padding-bottom: 90px; }
+.profile-film-hero .profile-heading a { pointer-events: auto; }
+.profile-film-hero .profile-heading .button { background: white; color: #101112; border-color: white; }
+.profile-film-hero .profile-heading > small { color: #d5dcd7; }
+.profile-film-hero .hero-video video, .profile-film-hero .video-poster { object-position: 65% center; }
+.photo-carousel { position: relative; background: #101112; color: white; }
+.carousel-window { overflow: hidden; touch-action: pan-y; }
+.carousel-track { display: flex; transition: transform .85s cubic-bezier(.22,.65,.3,1); }
+.carousel-slide { flex: 0 0 100%; min-width: 0; }
+.carousel-slide img { width: 100%; height: 510px; object-fit: cover; }
+.carousel-controls { position: absolute; bottom: 22px; left: 24px; right: 24px; display: flex; align-items: center; justify-content: space-between; gap: 15px; pointer-events: none; }
+.carousel-controls > div { display: flex; gap: 5px; }
+.carousel-controls button, .carousel-count { background: #101112cf; border: 1px solid #ffffff80; color: white; min-height: 42px; font-size: 12px; padding: 10px 15px; pointer-events: auto; }
+.carousel-controls button:hover { background: #fff; color: #101112; }
+.carousel-controls button { min-width: 44px; }
+.carousel-count { border-color: transparent; font-size: 11px; display: grid; place-items: center; }
+.moving-gallery { padding-bottom: 80px; }
+.moving-gallery h2 { font-size: clamp(44px, 5vw, 70px); }
+.profile-body + .moving-gallery { padding-top: 0; }
+.directory-note { margin-bottom: 45px; }
+@media (max-width: 1000px) {
+  .film-banner > .page-width { width: calc(100% - 64px); }
+  .carousel-slide img { height: 430px; }
+}
+@media (max-width: 700px) {
+  .video-control { right: 20px; bottom: 20px; font-size: 11px; padding: 9px 12px; }
+  .training-hero .hero-bottom { bottom: 78px; padding-right: 0; }
+  .film-banner > .page-width { width: calc(100% - 40px); padding: 45px 0 90px; }
+  .film-banner { min-height: 410px; }
+  .hero-video .video-poster, .hero-video video { max-height: none; filter: none; z-index: auto; }
+  .coaches-film-hero { margin-bottom: 40px; }
+  .coaches-film-hero .coaches-intro { padding-block: 55px 105px; }
+  .coaches-film-hero .coaches-intro > div > p { margin-top: 0; }
+  .profile-film-hero .profile-heading { padding-bottom: 100px; }
+  .profile-film-hero .hero-video::after { background: linear-gradient(90deg, #000c, #0006); }
+  .carousel-slide img { height: 380px; }
+  .carousel-controls { bottom: 15px; left: 15px; right: 15px; }
+  .carousel-controls button { padding: 10px 12px; }
+  .moving-gallery { padding-bottom: 55px; }
+}
+
+.hero-video .video-poster { max-height: none; }

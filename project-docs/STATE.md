@@ -146,3 +146,7 @@ booking state, implement book/cancel against real endpoints.
 - Reused licensed discipline photography. Fictional coaches are not presented as identities of stock models.
 - All three tasks of project-docs/plans/phase-1-schedule-coaches-plan.md complete. Phase 1 stays open for dedicated membership page and final static-shell verification.
 - Next chunk: membership detail/comparison page. Backend/auth/real bookings remain deferred.
+
+## Active Chunk — Moving media
+- User requested distinct image sets, automatic photo swiping, and autoplay background hero films across all existing pages. Supersedes still-only hero decision.
+- Plan: project-docs/plans/phase-1-moving-media-plan.md.

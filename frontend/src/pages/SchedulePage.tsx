@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { HeroVideo, PhotoCarousel } from '../components/Media'
+import { galleries } from '../data/media'
 import { categories, days, trainers, weeklyClasses } from '../data/content'
 import type { ClassPreview } from '../data/content'
 
@@ -48,9 +50,9 @@ export function SchedulePage({ query }: { query: string }) {
   }
 
   return <>
-    <section className="schedule-banner">
+    <section className="schedule-banner film-banner"><HeroVideo name="schedule" />
       <div className="page-width"><p>Classes at FORM</p><h1 tabIndex={-1}>MAKE TIME<br />TO TRAIN.</h1><p>Find your session. Build your week around it.</p></div>
-      <img src="/images/stock/group.jpg" alt="Group training with dumbbells" width="1100" height="733" />
+      
     </section>
     <section className="weekly-schedule page-width" aria-labelledby="schedule-heading">
       <div className="weekly-heading"><div><h2 id="schedule-heading">Your training week</h2><p>A sample recurring timetable · All times WAT (UTC+1)</p></div><span className="sample-badge">Explore only · Booking coming later</span></div>
@@ -60,6 +62,7 @@ export function SchedulePage({ query }: { query: string }) {
       {visible.length ? <div className="day-groups">{days.filter(value => visible.some(item => item.day === value)).map(value => <section className="day-group" key={value} aria-label={`${value} sessions`}><h3>{value}</h3><ul>{visible.filter(item => item.day === value).map(item => <li className="session-row" key={item.id}><div className="session-time"><strong>{item.time}</strong><span>{item.duration} min</span></div><div className="session-name"><span>{item.category} / {item.level}</span><h4>{item.name}</h4><p>{item.location}</p></div><a className="session-coach" href={`#/coaches/${item.coachId}`}>{item.trainer}<span>View coach</span></a><button className="session-details" onClick={() => setSelected(item)} aria-label={`View ${item.name}, ${item.day} at ${item.time}`}>View class <span aria-hidden="true">↗</span></button></li>)}</ul></section>)}</div> : <div className="empty-schedule"><span aria-hidden="true">—</span><h3>No sessions in this selection.</h3><p>Try another day, discipline, or coach to see more of the sample week.</p><a className="button button-dark" href="#/classes">Show all sessions</a></div>}
       <div className="schedule-help"><h3>New to the floor?</h3><p>Start with Strength foundations or explore the class details to find a session that suits your experience.</p><a className="text-link" href="#/coaches">Meet the coaches <span aria-hidden="true">↗</span></a></div>
     </section>
+    <section className="page-width moving-gallery"><div className="section-intro"><h2>EVERY WAY TO MOVE.</h2><p>From focused lifting to shared sessions. Find the setting for your next workout.</p></div><PhotoCarousel slides={galleries.schedule} label="Training in session" /></section>
     <ClassDetails session={selected} onClose={() => setSelected(null)} />
   </>
 }
