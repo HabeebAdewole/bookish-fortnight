@@ -150,3 +150,12 @@ booking state, implement book/cancel against real endpoints.
 ## Active Chunk — Moving media
 - User requested distinct image sets, automatic photo swiping, and autoplay background hero films across all existing pages. Supersedes still-only hero decision.
 - Plan: project-docs/plans/phase-1-moving-media-plan.md.
+
+## Completed Chunk — Moving media across existing pages, 2026-09-24
+- Implemented six unique muted looping hero films: Home, Schedule, Coaching, Amara, Daniel and Tomi profiles.
+- Added 18 licensed photos; 23 distinct runtime photos total with no cross-page repeats, excluding video posters and shared branding.
+- Six galleries automatically slide every six seconds, with pause/play, previous/next, touch swipe and hover/focus pauses.
+- Offscreen/hidden playback stops. Reduced-motion/save-data use still posters; explicit playback is supported. Failed films preserve their poster.
+- Verified build/TypeScript/lint, six-page media audit, playback/rotation/manual controls, fallbacks, responsive widths and core schedule/profile flows. Details: project-docs/verification/moving-media-checks.md.
+- All three tasks in project-docs/plans/phase-1-moving-media-plan.md complete. Media sources recorded in project-docs/branding/MEDIA-SOURCES.md.
+- Phase 1 remains open. Next: dedicated membership page, using a distinct media set where appropriate, then final static-shell review. No backend/auth/booking changes.

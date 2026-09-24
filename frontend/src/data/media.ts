@@ -35,4 +35,3 @@ export const coachPhotos = {
   'daniel-cole': photo(5327469, 'Dumbbell training in a gym'),
   'tomi-adeyemi': photo(37182823, 'Assisted stretching in a studio'),
 }
-

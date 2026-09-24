@@ -7,3 +7,5 @@ User requested more imagery, no repeated photos, automatic image swiping and loo
 3. Verify playback, slide advance, pausing, failure fallback, responsive layout, reduced motion, existing user flows; document and commit.
 
 Keep FORM typography and monochrome treatment. Hero films replace static hero backgrounds; readable overlays protect text. Unique slide sets expand editorial imagery without reusing the same photo across routes. Coach imagery still illustrates fictional profiles, without claiming stock models are employees. No new pages in this chunk.
+
+All three tasks completed. See project-docs/verification/moving-media-checks.md.
