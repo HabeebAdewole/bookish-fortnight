@@ -131,3 +131,18 @@ booking state, implement book/cancel against real endpoints.
 - Verification: build/TypeScript/lint and 19 browser assertions passed; reviewed desktop/mobile screenshots in project-docs/verification/.
 - Updated brand guide, tokens, and media source record. Hero deliberately uses a still; reviewed film is supporting content, not autoplay hero footage.
 - Phase 1 remains open. Next chunk: dedicated weekly schedule with day filters and class details, then trainer profiles and membership page. Auth/backend remain deferred.
+
+## Active Chunk — Dedicated schedule and coaching pages
+- User requested continuation. Plan: project-docs/plans/phase-1-schedule-coaches-plan.md.
+- Shared mock coach/class records, URL-backed day/discipline/coach filters, class-detail dialog, coach directory and individual profiles.
+- Preserve static hosting compatibility and existing photography. Three tasks: plan/data, implementation, verification/ship.
+
+## Completed Chunk — Dedicated schedule and coaching, 2026-09-24
+- Added #/classes with 12 recurring sample sessions, combined day/discipline/coach filters, URL persistence, counts, helpful empty states and reset.
+- Added native class-detail dialog with session facts and coach links; keyboard dismissal restores focus.
+- Added #/coaches and three individual coach profiles with training focus, approach, and filtered session links.
+- Connected landing CTAs, coach names, schedule preview, header and footer to new routes. Existing club/membership anchors still work across pages.
+- Verification: production build, TypeScript, lint, 40 browser assertions and connected-flow smoke check passed. Desktop/mobile screenshots reviewed; details in project-docs/verification/schedule-coaches-checks.md.
+- Reused licensed discipline photography. Fictional coaches are not presented as identities of stock models.
+- All three tasks of project-docs/plans/phase-1-schedule-coaches-plan.md complete. Phase 1 stays open for dedicated membership page and final static-shell verification.
+- Next chunk: membership detail/comparison page. Backend/auth/real bookings remain deferred.

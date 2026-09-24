@@ -29,6 +29,7 @@ export function ClassSchedule({ category, onSelectCategory }: { category: Catego
           </li>
         ))}
       </ul>
+      <a className="text-link schedule-full-link" href={`#/classes${category === 'All classes' ? '' : `?category=${encodeURIComponent(category)}`}`}>View the full weekly schedule <span aria-hidden="true">↗</span></a>
     </section>
   )
 }
