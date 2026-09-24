@@ -218,14 +218,10 @@ body:has(.class-dialog[open]) { overflow: hidden; }
 .hero-video video { opacity: 0; transition: opacity .6s; }
 .hero-video video.video-ready { opacity: 1; }
 .hero-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #000b, #0005 62%, #0003); pointer-events: none; }
-.media-control { border: 1px solid #ffffff80; background: #101112a8; color: white; min-height: 42px; padding: 10px 16px; font-size: 12px; display: flex; align-items: center; gap: 12px; }
-.video-control { position: absolute; z-index: 5; right: 28px; bottom: 26px; }
-.video-control:hover { background: #101112; }
-.video-control:disabled { cursor: default; }
 .training-hero .hero-shade { display: none; }
 .training-hero .hero-content, .training-hero .hero-bottom { position: relative; z-index: 1; pointer-events: none; }
 .training-hero .hero-content a, .training-hero .hero-bottom a { pointer-events: auto; }
-.training-hero .hero-bottom { position: absolute; padding-right: 180px; }
+.training-hero .hero-bottom { position: absolute; padding-right: 0; }
 .film-banner { display: block; position: relative; isolation: isolate; min-height: 420px; }
 .film-banner > .page-width { position: relative; z-index: 1; width: min(1320px, calc(100% - 112px)); margin-inline: auto; padding: 58px 0 76px; pointer-events: none; }
 .coaches-film-hero { position: relative; isolation: isolate; background: #101112; color: #fff; margin-bottom: 64px; }
@@ -243,12 +239,6 @@ body:has(.class-dialog[open]) { overflow: hidden; }
 .carousel-track { display: flex; transition: transform .85s cubic-bezier(.22,.65,.3,1); }
 .carousel-slide { flex: 0 0 100%; min-width: 0; }
 .carousel-slide img { width: 100%; height: 510px; object-fit: cover; }
-.carousel-controls { position: absolute; bottom: 22px; left: 24px; right: 24px; display: flex; align-items: center; justify-content: space-between; gap: 15px; pointer-events: none; }
-.carousel-controls > div { display: flex; gap: 5px; }
-.carousel-controls button, .carousel-count { background: #101112cf; border: 1px solid #ffffff80; color: white; min-height: 42px; font-size: 12px; padding: 10px 15px; pointer-events: auto; }
-.carousel-controls button:hover { background: #fff; color: #101112; }
-.carousel-controls button { min-width: 44px; }
-.carousel-count { border-color: transparent; font-size: 11px; display: grid; place-items: center; }
 .moving-gallery { padding-bottom: 80px; }
 .moving-gallery h2 { font-size: clamp(44px, 5vw, 70px); }
 .profile-body + .moving-gallery { padding-top: 0; }
@@ -258,8 +248,7 @@ body:has(.class-dialog[open]) { overflow: hidden; }
   .carousel-slide img { height: 430px; }
 }
 @media (max-width: 700px) {
-  .video-control { right: 20px; bottom: 20px; font-size: 11px; padding: 9px 12px; }
-  .training-hero .hero-bottom { bottom: 78px; padding-right: 0; }
+  .training-hero .hero-bottom { bottom: 23px; padding-right: 0; }
   .film-banner > .page-width { width: calc(100% - 40px); padding: 45px 0 90px; }
   .film-banner { min-height: 410px; }
   .hero-video .video-poster, .hero-video video { max-height: none; filter: none; z-index: auto; }
@@ -269,9 +258,19 @@ body:has(.class-dialog[open]) { overflow: hidden; }
   .profile-film-hero .profile-heading { padding-bottom: 100px; }
   .profile-film-hero .hero-video::after { background: linear-gradient(90deg, #000c, #0006); }
   .carousel-slide img { height: 380px; }
-  .carousel-controls { bottom: 15px; left: 15px; right: 15px; }
-  .carousel-controls button { padding: 10px 12px; }
   .moving-gallery { padding-bottom: 55px; }
 }
 
 .hero-video .video-poster { max-height: none; }
+
+/* Coordinated motion; OS reduced-motion preference remains authoritative. */
+.club-inline-film { height: 390px; margin-top: 28px; position: relative; overflow: hidden; }
+.club-inline-film .hero-video::after { background: none; }
+.button { transition: background .2s, color .2s, transform .2s; }
+.button:hover { transform: translateY(-2px); }
+.button:active { transform: translateY(0); }
+.coach-card-image img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.coach-card-image:hover img { transform: scale(1.035); }
+.class-dialog[open] { animation: dialog-enter .22s ease-out; }
+@keyframes dialog-enter { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 700px) { .club-inline-film { height: 250px; } }

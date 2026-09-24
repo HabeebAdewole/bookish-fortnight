@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore } from 'react'
+import { usePageMotion } from './hooks/usePageMotion'
 import Home from './pages/Home'
 import { SchedulePage } from './pages/SchedulePage'
 import { CoachesPage, CoachProfile } from './pages/CoachesPage'
@@ -13,6 +14,7 @@ function subscribe(callback: () => void) {
 export default function App() {
   const hash = useSyncExternalStore(subscribe, () => window.location.hash, () => '')
   const [path, query = ''] = hash.startsWith('#/') ? hash.slice(1).split('?') : ['/', '']
+  usePageMotion(path)
   const coach = trainers.find(item => path === `/coaches/${item.id}`)
   const title = path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
 

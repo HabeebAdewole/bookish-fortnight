@@ -20,3 +20,6 @@ Spacious photographic landing page. Practical category filters, clear session du
 
 ## Motion revision — 2026-09-24
 The user's request for looping hero films and automatic photo rotation supersedes the earlier no-autoplay direction. All six existing pages now have unique hero clips, visible pause/play controls and dedicated photographic galleries. Galleries advance every six seconds, pause on hover/focus, support previous/next and touch swipe, and can be paused explicitly. Reduced motion and save-data start with still posters; explicit playback remains available. Offscreen/hidden media stops. All photo sets are distinct across routes. New pages should use this shared media system with their own licensed assets.
+
+## Automatic-only revision — 2026-09-24
+At the user's request, remove visible play/pause, next/previous and photo counters. Media advances automatically without hover/focus pausing or manual swipe. Preserve OS reduced-motion/save-data stills and offscreen/hidden pausing. Club supporting film is now automatic inline footage. Add one coordinated hero entrance and selective photographic scroll reveals; keep hover/dialog motion restrained. This supersedes the controls described above.

@@ -159,3 +159,10 @@ booking state, implement book/cancel against real endpoints.
 - Verified build/TypeScript/lint, six-page media audit, playback/rotation/manual controls, fallbacks, responsive widths and core schedule/profile flows. Details: project-docs/verification/moving-media-checks.md.
 - All three tasks in project-docs/plans/phase-1-moving-media-plan.md complete. Media sources recorded in project-docs/branding/MEDIA-SOURCES.md.
 - Phase 1 remains open. Next: dedicated membership page, using a distinct media set where appropriate, then final static-shell review. No backend/auth/booking changes.
+
+## Completed Chunk — Automatic media and animations, 2026-09-24
+- User requested removal of video/photo controls and additional animation. Shared components now run automatically without media buttons or counters; inline club film also autoplays.
+- Added staggered hero entrances, selective image reveals on scroll, hover polish and dialog entrance. Reduced-motion changes cancel animation and preserve still imagery.
+- Build/TypeScript/lint and 12 browser checks passed; mobile screenshot reviewed. Verification: project-docs/verification/automatic-motion-checks.md.
+- Three tasks in project-docs/plans/phase-1-automatic-motion-plan.md complete. This supersedes prior visible-control/manual-swipe decisions.
+- Phase 1 remains open; next dedicated membership page and final static-shell review.
