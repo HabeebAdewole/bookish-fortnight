@@ -52,3 +52,8 @@ Hero clips are muted, looping, and play automatically when visible unless reduce
 | 36096460 | Timuçin Şen | https://www.pexels.com/photo/man-exercising-at-gym-with-dumbbells-and-weights-36096460/ |
 
 The library adds 18 photos. Runtime inspection found 23 distinct non-poster photographs across six pages, with no duplicate image sources. Sets are assigned in frontend/src/data/media.ts. The contact sheet is in project-docs/verification/.
+
+## Membership hero — 2026-09-24
+- Files: frontend/public/images/media/membership.mp4 and membership-poster.jpg.
+- Creator: Yaroslav Shuraev. Source: https://www.pexels.com/video/a-woman-doing-battle-ropes-in-the-gym-8473154/ . License: https://www.pexels.com/license/ . Source metadata/landscape dimensions were reviewed during the preceding media research.
+- Local 1280×720 clip with its provider poster; unique to the membership page. Automatic muted looping playback and reduced-motion fallback use the shared component.

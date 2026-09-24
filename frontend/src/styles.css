@@ -274,3 +274,51 @@ body:has(.class-dialog[open]) { overflow: hidden; }
 .class-dialog[open] { animation: dialog-enter .22s ease-out; }
 @keyframes dialog-enter { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @media (max-width: 700px) { .club-inline-film { height: 250px; } }
+
+.membership-hero { color: #fff; min-height: 540px; }
+.membership-hero h1 { font-size: clamp(64px, 7vw, 106px); margin: 24px 0; }
+.membership-hero p { font-size: 14px; color: #e2e7e3; }
+.membership-hero .button { pointer-events: auto; margin-top: 28px; }
+.membership-detail-plans:focus { outline: none; }
+.membership-fit { font-size: 13px; color: #646b66; margin-top: 14px; }
+.membership-featured .membership-fit { color: #c6cdc8; }
+.membership-comparison { background: #f2f3f1; padding-block: 85px; }
+.comparison-scroll { overflow-x: auto; }
+.comparison-scroll table { width: 100%; min-width: 640px; border-collapse: collapse; text-align: left; }
+.comparison-scroll th, .comparison-scroll td { padding: 25px 20px; border-bottom: 1px solid #cbd1cc; font-size: 13px; }
+.comparison-scroll th { font-weight: 500; }
+.comparison-scroll thead th { font-size: 21px; vertical-align: top; }
+.comparison-scroll thead th:first-child { font-size: 13px; width: 32%; }
+.comparison-scroll thead th span { display: block; margin-top: 10px; font-size: 12px; font-weight: 400; }
+.comparison-scroll tbody th { padding-left: 0; }
+.comparison-scroll thead th:first-child { padding-left: 0; }
+.comparison-note, .comparison-hint { font-size: 11px; color: #59615b; margin-top: 20px; }
+.comparison-hint { display: none; margin: 0 0 16px; }
+.membership-faq { display: grid; grid-template-columns: 1fr 1.35fr; gap: 90px; }
+.membership-faq > div > p:not(.section-caption) { margin: 25px 0 16px; font-size: 14px; max-width: 320px; color: #606761; }
+.faq-list details { border-bottom: 1px solid #cdd1cd; }
+.faq-list details:first-child { border-top: 1px solid #cdd1cd; }
+.faq-list summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 24px 0; font-size: 15px; font-weight: 500; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary span { width: 14px; height: 14px; position: relative; flex-shrink: 0; }
+.faq-list summary span::before, .faq-list summary span::after { content: ''; position: absolute; background: currentColor; width: 14px; height: 1px; top: 6px; left: 0; }
+.faq-list summary span::after { transform: rotate(90deg); transition: transform .2s; }
+.faq-list details[open] summary span::after { transform: rotate(0); }
+.faq-list details p { margin: 0 30px 25px 0; font-size: 14px; color: #606761; }
+.membership-next { background: #101112; color: white; padding: 75px 0; }
+.membership-next h2 { font-size: clamp(48px, 5vw, 76px); }
+.membership-next p { margin: 20px 0 25px; font-size: 14px; color: #c6cdc8; }
+@media (max-width: 800px) {
+  .membership-faq { grid-template-columns: 1fr; gap: 35px; }
+  .comparison-hint { display: block; }
+}
+@media (max-width: 700px) {
+  .membership-hero { min-height: 510px; }
+  .membership-hero h1 { font-size: 62px; }
+  .membership-comparison { padding-block: 55px; }
+  .comparison-scroll th, .comparison-scroll td { padding: 20px 15px; font-size: 12px; }
+  .comparison-scroll thead th { font-size: 18px; }
+  .faq-list summary { font-size: 14px; padding-block: 22px; }
+  .faq-list details p { font-size: 13px; }
+  .membership-next { padding-block: 55px; }
+}

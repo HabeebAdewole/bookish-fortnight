@@ -4,10 +4,10 @@ const links = [
   { href: '#/classes', label: 'Classes', page: 'classes' },
   { href: '#/coaches', label: 'Coaching', page: 'coaches' },
   { href: '#club', label: 'The club', page: 'club' },
-  { href: '#membership', label: 'Membership', page: 'membership' },
+  { href: '#/membership', label: 'Membership', page: 'membership' },
 ]
 
-export function Header({ active }: { active?: 'classes' | 'coaches' }) {
+export function Header({ active }: { active?: 'classes' | 'coaches' | 'membership' }) {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className="site-header">

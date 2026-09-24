@@ -166,3 +166,14 @@ booking state, implement book/cancel against real endpoints.
 - Build/TypeScript/lint and 12 browser checks passed; mobile screenshot reviewed. Verification: project-docs/verification/automatic-motion-checks.md.
 - Three tasks in project-docs/plans/phase-1-automatic-motion-plan.md complete. This supersedes prior visible-control/manual-swipe decisions.
 - Phase 1 remains open; next dedicated membership page and final static-shell review.
+
+## Active Chunk — Membership page
+- User approved dedicated plans/comparison/FAQ page. Three-task plan: project-docs/plans/phase-1-membership-plan.md.
+
+## Completed Chunk — Membership page, 2026-09-24
+- Added #/membership with the three shared sample plans, inclusion comparison, six keyboard-accessible FAQs, and schedule/coach links.
+- Connected header/footer and landing membership CTAs. Added a unique licensed background film with existing automatic media behavior and entrance motion.
+- Production build/TypeScript/lint and eleven browser checks passed; mobile comparison keyboard scrolling verified; desktop/mobile screenshots reviewed.
+- Verification: project-docs/verification/membership-checks.md. All three tasks in project-docs/plans/phase-1-membership-plan.md complete.
+- Landing, schedule, coaching directory/profiles and membership pages are implemented. Phase 1 remains open pending final full-site static-shell review. Backend/auth/real bookings remain deferred.
+- Next action: final navigation, content consistency, responsiveness and static build review, then close Phase 1 if all checks pass.

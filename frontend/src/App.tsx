@@ -1,6 +1,7 @@
 import { useEffect, useSyncExternalStore } from 'react'
 import { usePageMotion } from './hooks/usePageMotion'
 import Home from './pages/Home'
+import { MembershipPage } from './pages/MembershipPage'
 import { SchedulePage } from './pages/SchedulePage'
 import { CoachesPage, CoachProfile } from './pages/CoachesPage'
 import { PageShell } from './components/PageShell'
@@ -16,7 +17,7 @@ export default function App() {
   const [path, query = ''] = hash.startsWith('#/') ? hash.slice(1).split('?') : ['/', '']
   usePageMotion(path)
   const coach = trainers.find(item => path === `/coaches/${item.id}`)
-  const title = path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
+  const title = path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
 
   useEffect(() => {
     document.title = `FORM — ${title}`
@@ -33,6 +34,7 @@ export default function App() {
   }, [hash, path])
 
   if (path === '/') return <Home />
+  if (path === '/membership') return <PageShell active="membership"><MembershipPage /></PageShell>
   if (path === '/classes') return <PageShell active="classes"><SchedulePage query={query} /></PageShell>
   if (path === '/coaches') return <PageShell active="coaches"><CoachesPage /></PageShell>
   if (coach) return <PageShell active="coaches"><CoachProfile coach={coach} /></PageShell>
