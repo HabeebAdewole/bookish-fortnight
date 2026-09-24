@@ -7,8 +7,8 @@ export function ClassSchedule({ category, onSelectCategory }: { category: Catego
   return (
     <section id="schedule" className="page-width schedule-section" aria-labelledby="classes-title">
       <div className="section-intro">
-        <h2 id="classes-title">A WEEK IN MOTION.</h2>
-        <p>A little preview of your next routine.</p>
+        <h2 id="classes-title">MAKE TIME TO TRAIN.</h2>
+        <p>Find your discipline. Plan your next session.</p>
       </div>
       <div className="schedule-toolbar">
         <div className="class-filters" role="group" aria-label="Filter classes by category">

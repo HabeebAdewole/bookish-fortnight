@@ -1,39 +1,19 @@
 # FORM — current brand direction
 
-Updated 2026-09-23 after the user approved the expressive illustrated redesign. This supersedes the initial muted photographic direction; the original concept board remains a historical reference.
+Updated 2026-09-24. The photography-led gym direction supersedes the illustrated September 23 direction. Earlier boards and artwork remain historical references.
 
 ## Identity
+FORM is a training club centred on strength, conditioning, mobility, and practical coaching. Retain the existing wordmark. Primary line: Find your form. Use direct training language and avoid invented luxury claims or athlete credentials.
 
-FORM is a welcoming, energetic fitness club. Primary line: **Find your form.** The outlined FORM wordmark remains the logo. Use the light wordmark on ink and the dark wordmark on light surfaces. Keep clear space around it; never distort the lettering.
+## Palette and typography
+Black #101112, white #FFFFFF, chalk #F2F3F1, steel #717776, accent orange #E87544. White actions on dark photographic backgrounds. Orange is reserved for interaction and keyboard focus, not small white text backgrounds. Reference tokens: frontend/public/brand/tokens.css; application styles: frontend/src/styles.css.
 
-## Palette
+Barlow Condensed 700 for athletic headings; DM Sans 400–700 for body/navigation. Self-hosted fonts retain their OFL licenses in project-docs/licenses/.
 
-| Colour | Hex | Role |
-| --- | --- | --- |
-| Ink | #202320 | Hero, footer, text |
-| Warm white | #FFF9ED | Main background, light text |
-| Orange | #FF7446 | Main actions and strength content |
-| Sky blue | #A8D8F0 | Community and conditioning content |
-| Pale yellow | #F1E7A1 | Mobility and highlighted membership |
+## Photography and motion
+Real licensed training, coaching, mobility, and facility photography. Full-width lifting hero with a contrast overlay; natural image crops elsewhere. Media sources are recorded in MEDIA-SOURCES.md. Do not present stock models as named employees or stock locations as an operating FORM gym.
 
-Use ink text on the bright colours; do not use white small text on orange. Runtime theme: `frontend/src/styles.css`. Reference tokens: `frontend/public/brand/tokens.css`. Keep them in sync.
+Video is optional, mounted only after the user opens the film section, with native playback controls and a poster. No autoplay. Hover image movement is subtle; reduced-motion preference disables transitions and smooth scrolling.
 
-## Type
-
-Barlow Condensed 800 is the athletic display face. DM Sans 400–700 is used for body copy and controls. Fonts are self-hosted through Fontsource. Their OFL licenses are retained in `project-docs/licenses/`. Use expressive scale for major headings while keeping navigation and explanations readable.
-
-## Imagery and shapes
-
-The hero uses original illustrated adults training and resting together. Weight plates, running-track curves, and simple movement graphics make the direction specific to fitness. The earlier training photograph is retained in the community section. Trainer names and biographies remain fictional placeholder content.
-
-## Motion
-
-Desktop hero: a modest scroll-linked scale and vertical offset. First-session steps: staggered entry when the section appears. Cards and buttons: brief interaction feedback. The class rail supports scrolling, keyboard arrows, and previous/next buttons. Reduced-motion mode removes animation and smooth scrolling; mobile uses a static hero.
-
-## Inspiration boundary
-
-Cardtonic Upskill informed the broad ideas of expressive display type, illustration, colour blocks, and scroll interaction. FORM uses its own artwork, layout, visual motifs, copy, colours, and timing. No reference-site source files or artwork are part of the app.
-
-## Project conventions
-
-VS Code project: `C:\Users\brigh\Desktop\Projects\gym-booking`. Code and runtime assets live in `frontend/`; documentation lives in `project-docs/`. No added OpenAI branding, watermarks, or co-author credits.
+## Layout and content
+Spacious photographic landing page. Practical category filters, clear session duration and coaches, transparent sample membership inclusions. Mobile content stacks without horizontal scrolling. Dedicated schedule, trainer profiles, and pricing pages remain later Phase 1 chunks. Auth and bookings stay in their planned phases.

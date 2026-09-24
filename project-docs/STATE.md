@@ -118,3 +118,16 @@ booking state, implement book/cancel against real endpoints.
 - Dribbble detailed visual inspection was limited by human verification. Final hero footage remains to be selected; current landscape clips are supporting candidates.
 - Application code unchanged in this research chunk. Phase 1 remains open.
 - Next action: select cohesive final hero media and plan the photographic landing/schedule/trainer/membership implementation in bounded chunks. Auth remains Phase 3; backend remains Phase 2.
+
+## Active Chunk — Photographic landing rebuild
+- User requested continuation. Executing the three-task plan in project-docs/plans/phase-1-photographic-plan.md.
+- Build a locally hosted photo-led landing with optional club video, preserving static schedule filtering. Dedicated pages remain subsequent work.
+
+## Completed Chunk — Photographic landing rebuild, 2026-09-24
+- Replaced illustrated opening with locally hosted licensed strength photography and original gym-focused copy.
+- Added photographic class formats, a monochrome coaching section, facility imagery, optional playable club film, and revised memberships/footer.
+- Preserved working category filters and responsive mobile navigation; added club navigation.
+- Plan: project-docs/plans/phase-1-photographic-plan.md. All three tasks complete.
+- Verification: build/TypeScript/lint and 19 browser assertions passed; reviewed desktop/mobile screenshots in project-docs/verification/.
+- Updated brand guide, tokens, and media source record. Hero deliberately uses a still; reviewed film is supporting content, not autoplay hero footage.
+- Phase 1 remains open. Next chunk: dedicated weekly schedule with day filters and class details, then trainer profiles and membership page. Auth/backend remain deferred.

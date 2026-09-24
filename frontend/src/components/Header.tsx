@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 const links = [
   { href: '#classes', label: 'Classes' },
-  { href: '#trainers', label: 'Trainers' },
+  { href: '#trainers', label: 'Coaching' },
+  { href: '#club', label: 'The club' },
   { href: '#membership', label: 'Membership' },
 ]
 
@@ -18,7 +19,7 @@ export function Header() {
       <nav className="desktop-nav" aria-label="Main navigation">
         {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
       </nav>
-      <a className="button button-orange header-action" href="#classes">Find your class <span aria-hidden="true">↗</span></a>
+      <a className="button button-orange header-action" href="#classes">Explore classes <span aria-hidden="true">↗</span></a>
       <button
         className="menu-toggle"
         aria-expanded={menuOpen}

@@ -1,45 +1,57 @@
 import { useState } from 'react'
 import { Header } from './components/Header'
-import { ClassDiscovery } from './components/ClassDiscovery'
 import { ClassSchedule } from './components/ClassSchedule'
-import { HeroMotion, SessionGuide } from './components/Motion'
 import { memberships, trainers } from './data/content'
 import type { Category } from './data/content'
 
+const formats: { name: Exclude<Category, 'All classes'>; image: string; alt: string; description: string; detail: string }[] = [
+  { name: 'Strength', image: 'strength.jpg', alt: 'Athlete preparing to lift a loaded barbell', description: 'Build strength. Own the fundamentals.', detail: 'Technique-led lifting · 50 min' },
+  { name: 'Conditioning', image: 'group.jpg', alt: 'Group training with dumbbells in a studio', description: 'Train your engine. Find your pace.', detail: 'Full-body training · 45 min' },
+  { name: 'Mobility', image: 'mobility.jpg', alt: 'A group stretching together on studio mats', description: 'Move freely. Recover with purpose.', detail: 'Mobility and recovery · 40 min' },
+]
+
 function App() {
   const [category, setCategory] = useState<Category>('All classes')
+  const [showFilm, setShowFilm] = useState(false)
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
       <div id="home">
         <Header />
         <main id="main">
-          <HeroMotion>
-            <div className="hero-track hero-track-one" aria-hidden="true" /><div className="hero-track hero-track-two" aria-hidden="true" />
-            <div className="hero-heading page-width"><p className="hero-eyebrow"><span /> Good movement. Better company.</p><h1 id="hero-title">FIND YOUR FORM.</h1><p className="hero-description">For the first-timers. The one-more-reppers.<br />And everyone finding their own pace.</p><a className="button button-orange" href="#classes">Find your class <span aria-hidden="true">↗</span></a></div>
-            <div className="hero-scene page-width"><span className="hero-sticker">ALL PACES.<br />ALL PEOPLE.</span><img className="hero-art" src="/images/form-movement-illustration.png" width="1536" height="1024" fetchPriority="high" alt="Three people lifting, stretching, and taking a break together, illustrated in orange and sky blue" /><span className="hero-side-note">A little stronger.<br />A lot more you.<svg viewBox="0 0 80 70" fill="none" aria-hidden="true"><path d="M8 8C62 4 77 38 29 57M29 57L44 58M29 57L35 42" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span></div>
-            <div className="hero-baseline page-width"><span>Come as you are. Leave a little brighter.</span><a href="#classes">Let’s move <span aria-hidden="true">↓</span></a></div>
-          </HeroMotion>
-          <section className="intro-strip" aria-label="Our approach"><div className="page-width"><span className="asterisk" aria-hidden="true">✳</span><p>NOT A NEW YOU.<br />JUST MORE YOU.</p><div>A good session isn’t about becoming someone else. It’s finding what makes you feel strong, supported, and ready for the rest of your day.</div></div></section>
-          <ClassDiscovery onSelectCategory={setCategory} />
-          <ClassSchedule category={category} onSelectCategory={setCategory} />
-          <SessionGuide />
-          <section id="trainers" className="trainers-section section-space" aria-labelledby="trainers-title">
-            <div className="page-width">
-              <div className="community-intro"><div><span className="section-kicker">You don’t have to do it alone</span><h2 id="trainers-title">GOOD PEOPLE.<br />GREAT ENERGY.</h2><p>Someone in your corner. Someone who remembers your name. Someone who celebrates that extra rep with you.</p><a href="#coach-list" className="button button-dark">Meet your coaches <span aria-hidden="true">↓</span></a></div><div className="community-photo"><img src="/images/form-training.png" alt="People training together in a bright, welcoming gym" width="2164" height="727" loading="lazy" /><span>YOUR KIND OF PEOPLE.</span></div></div>
-              <div id="coach-list" className="trainer-grid grid gap-6 md:grid-cols-3">{trainers.map((trainer, index) => <article className="trainer" key={trainer.name}><div className={`trainer-avatar avatar-${index}`} aria-hidden="true">{trainer.initials}</div><span className="trainer-specialty">{trainer.specialty}</span><h3>{trainer.name}</h3><p>{trainer.description}</p></article>)}</div>
+          <section className="training-hero" aria-labelledby="hero-title">
+            <img className="hero-photo" src="/images/stock/strength.jpg" alt="Athlete setting up a barbell lift on the gym floor" width="2000" height="1333" fetchPriority="high" />
+            <div className="hero-shade" />
+            <div className="hero-content page-width">
+              <p className="hero-intro">Strength. Conditioning. A place to progress.</p>
+              <h1 id="hero-title">BUILT THROUGH<br />EVERY REP.</h1>
+              <p className="hero-description">Purposeful training. Hands-on coaching.<br />Make your next session count.</p>
+              <div className="hero-actions"><a className="button button-white" href="#schedule">Explore the schedule</a><a className="text-link" href="#membership">View memberships <span aria-hidden="true">↗</span></a></div>
             </div>
+            <div className="hero-bottom page-width"><span>Find your form. Build from here.</span><a href="#classes">Explore FORM <span aria-hidden="true">↓</span></a></div>
           </section>
-          <section id="membership" className="membership-section page-width section-space" aria-labelledby="membership-title">
-            <div className="section-intro"><div><span className="section-kicker">A little commitment goes a long way</span><h2 id="membership-title">MAKE IT<br />YOUR REGULAR.</h2></div><div><p>A few sessions or a full-on routine.<br />Find the rhythm that fits your life.</p><p className="sample-note">Sample memberships and pricing.</p></div></div>
-            <div className="membership-grid grid gap-5 md:grid-cols-3">{memberships.map((membership) => <article className={`membership-plan ${membership.featured ? 'membership-featured' : ''}`} key={membership.name}><div className="plan-heading"><h3>{membership.name}</h3>{membership.featured && <span className="plan-label">A steady rhythm</span>}</div><p className="plan-description">{membership.description}</p><p className="plan-price"><span className="currency">₦</span>{membership.price}<span className="billing-period">/ month</span></p><ul>{membership.features.map(feature => <li key={feature}><span aria-hidden="true">✓</span>{feature}</li>)}</ul><a className="plan-link" href="#schedule">Explore the sample classes <span aria-hidden="true">↗</span></a></article>)}</div>
+
+          <section id="classes" className="section-space page-width" aria-labelledby="formats-title">
+            <div className="section-intro"><h2 id="formats-title">TRAIN WITH<br />INTENTION.</h2><p>Three ways to move forward. Build your strength, challenge your endurance, and make time to recover.</p></div>
+            <div className="format-grid">{formats.map(format => <a className="format-card" key={format.name} href="#schedule" onClick={() => setCategory(format.name)}><div className="format-image"><img src={`/images/stock/${format.image}`} alt={format.alt} width="800" height="1000" loading="lazy" /><span className="format-action" aria-hidden="true">↗</span></div><div className="format-heading"><h3>{format.name}</h3><span>{format.detail}</span></div><p>{format.description}</p></a>)}</div>
           </section>
-          <section className="closing-section" aria-labelledby="closing-title"><div className="page-width closing-inner"><span className="closing-orbit" aria-hidden="true" /><p>No perfect moment. Just this one.</p><h2 id="closing-title">LESS SCROLL.<br />MORE STRETCH.</h2><a className="button button-dark" href="#classes">Find your first class <span aria-hidden="true">↗</span></a></div></section>
+
+          <div className="schedule-wrap"><ClassSchedule category={category} onSelectCategory={setCategory} /></div>
+
+          <section id="trainers" className="coaching-section" aria-labelledby="coaching-title">
+            <div className="coaching-image"><img src="/images/stock/coaching.jpg" alt="A personal trainer guiding an athlete through an exercise" width="1400" height="1400" loading="lazy" /><span>Coaching in focus</span></div>
+            <div className="coaching-copy"><p className="section-caption">Personal training</p><h2 id="coaching-title">YOUR GOALS.<br />A CLEAR PLAN.</h2><p>Learn how to lift with control, train with consistency, and progress at a pace that works for you. Start with technique. Build from there.</p><div className="coach-list">{trainers.map(trainer => <div className="coach-row" key={trainer.name}><h3>{trainer.name}</h3><span>{trainer.specialty}</span></div>)}</div><p className="sample-note">Illustrative coaching team. Photography shows stock models.</p><a className="text-link" href="#schedule" onClick={() => setCategory('Strength')}>Explore coached sessions <span aria-hidden="true">↗</span></a></div>
+          </section>
+
+          <section id="club" className="club-section section-space page-width" aria-labelledby="club-title"><div className="section-intro"><div><p className="section-caption">The training floor</p><h2 id="club-title">SPACE TO<br />PUT IN THE WORK.</h2></div><p>Free weights. Room to move. Space to reset. A considered environment for every part of your session.</p></div><div className="club-photo"><img src="/images/stock/club.jpg" alt="A spacious gym with strength equipment, racks, and benches" width="1800" height="1200" loading="lazy" /></div><div className="club-bottom"><p>A look at the spaces that inspire FORM.<br /><span>Stock imagery for our concept club.</span></p><button className="text-link" aria-expanded={showFilm} aria-controls="club-film" onClick={() => setShowFilm(!showFilm)}>{showFilm ? 'Close gym film' : 'Watch gym film'} <span aria-hidden="true">{showFilm ? '−' : '▷'}</span></button></div><div id="club-film" hidden={!showFilm}>{showFilm && <div className="film-panel"><video controls playsInline preload="metadata" poster="/images/stock/club-film.jpg" aria-label="Film showing gym equipment and the training floor"><source src="/images/stock/club-film.mp4" type="video/mp4" />Your browser does not support this video.</video><p>Gym-space inspiration. Stock film by Анатолий / Pexels.</p></div>}</div></section>
+
+          <section id="membership" className="membership-section section-space" aria-labelledby="membership-title"><div className="page-width"><div className="section-intro"><h2 id="membership-title">COMMIT TO<br />YOUR TRAINING.</h2><p>Choose the number of coached sessions that fits your week.<br /><span className="sample-note">Sample monthly plans. Bookings are not open.</span></p></div><div className="membership-grid">{memberships.map(plan => <article className={`membership-plan ${plan.featured ? 'membership-featured' : ''}`} key={plan.name}><div className="plan-heading"><h3>{plan.name}</h3>{plan.featured && <span>Train twice a week</span>}</div><p className="plan-price">₦{plan.price}<span> / month</span></p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><a className="button" href="#schedule" onClick={() => setCategory('All classes')}>Explore classes</a></article>)}</div></div></section>
+
+          <section className="closing-section page-width"><h2>YOUR NEXT REP<br />STARTS HERE.</h2><a className="button button-dark" href="#schedule" onClick={() => setCategory('All classes')}>Find your session</a></section>
         </main>
-        <footer className="site-footer"><div className="page-width"><div className="footer-main"><a href="#home" aria-label="FORM home"><img src="/brand/form-wordmark-light.svg" alt="FORM" width="464" height="132" /></a><p>Find your form.<br />Keep showing up.</p><nav aria-label="Footer navigation"><a href="#classes">Classes</a><a href="#trainers">Trainers</a><a href="#membership">Membership</a></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} FORM</span><p>Portfolio concept. Classes, trainers, and prices are illustrative. Bookings are not open.</p><a href="#home">Back to top ↑</a></div></div></footer>
+        <footer className="site-footer"><div className="page-width"><div className="footer-main"><a href="#home" aria-label="FORM home"><img src="/brand/form-wordmark-light.svg" alt="FORM" width="464" height="132" /></a><p>Training with purpose.<br />Progress through practice.</p><nav aria-label="Footer navigation"><a href="#classes">Classes</a><a href="#trainers">Coaching</a><a href="#club">The club</a><a href="#membership">Membership</a></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} FORM</span><p>Portfolio concept. Classes, coaches, facilities, and prices are illustrative.</p><a href="#home">Back to top ↑</a></div></div></footer>
       </div>
     </>
   )
 }
-
 export default App
