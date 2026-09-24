@@ -54,7 +54,7 @@ Phase 2: stand up the backend API, replace mock data with real fetches, wire up 
 booking state, implement book/cancel against real endpoints.
 
 ## Last Session Date
-2026-09-23
+2026-09-24
 
 ## Branding Foundation — 2026-09-23
 - Project path: C:\Users\brigh\Desktop\Projects\gym-booking
@@ -108,3 +108,13 @@ booking state, implement book/cancel against real endpoints.
 - Fixed during review: hero artwork spacing, carousel start-edge detection, and class-card category selection.
 - Next action: user visual review of the redesigned landing page, then plan the dedicated read-only schedule page. Phase 1 remains open.
 
+
+## Current Direction — 2026-09-24 (supersedes illustrated direction)
+- User wants an authentic photography/video-led gym experience inspired by Equinox, with original FORM design and copy.
+- Licensed stock photography and video sourcing is authorized. Additional references cover landing, schedule, trainers/profile, membership, about/contact, and auth.
+- Completed research chunk: Equinox page review, media/source/license review, and a browser-verified six-photo/two-video preview board.
+- Review: project-docs/discussions/2026-09-24-photographic-direction.md.
+- Playable board: project-docs/branding/media-shortlist.html; screenshot beside it.
+- Dribbble detailed visual inspection was limited by human verification. Final hero footage remains to be selected; current landscape clips are supporting candidates.
+- Application code unchanged in this research chunk. Phase 1 remains open.
+- Next action: select cohesive final hero media and plan the photographic landing/schedule/trainer/membership implementation in bounded chunks. Auth remains Phase 3; backend remains Phase 2.
