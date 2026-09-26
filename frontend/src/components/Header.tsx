@@ -3,11 +3,12 @@ import { useState } from 'react'
 const links = [
   { href: '#/classes', label: 'Classes', page: 'classes' },
   { href: '#/coaches', label: 'Coaching', page: 'coaches' },
-  { href: '#club', label: 'The club', page: 'club' },
+  { href: '#/about', label: 'The club', page: 'about' },
+  { href: '#/contact', label: 'Contact', page: 'contact' },
   { href: '#/membership', label: 'Membership', page: 'membership' },
 ]
 
-export function Header({ active }: { active?: 'classes' | 'coaches' | 'membership' }) {
+export function Header({ active }: { active?: 'classes' | 'coaches' | 'membership' | 'about' | 'contact' }) {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className="site-header">
