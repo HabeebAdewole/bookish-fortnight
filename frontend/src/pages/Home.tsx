@@ -8,7 +8,7 @@ import type { Category } from '../data/content'
 
 const formats: { name: Exclude<Category, 'All classes'>; image: string; alt: string; description: string; detail: string }[] = [
   { name: 'Strength', image: '6388384.jpg', alt: 'An athlete preparing for a strength session', description: 'Build strength. Own the fundamentals.', detail: 'Technique-led lifting · 50 min' },
-  { name: 'Conditioning', image: '31843007.jpg', alt: 'An athlete working with weights in a gym', description: 'Train your engine. Find your pace.', detail: 'Full-body training · 45 min' },
+  { name: 'Conditioning', image: '6388524.jpg', alt: 'An athlete training on an air bike', description: 'Train your engine. Find your pace.', detail: 'Full-body training · 45 min' },
   { name: 'Mobility', image: '6388979.jpg', alt: 'An athlete stretching on the gym floor', description: 'Move freely. Recover with purpose.', detail: 'Mobility and recovery · 40 min' },
 ]
 
@@ -40,7 +40,7 @@ function Home() {
           <div className="schedule-wrap"><ClassSchedule category={category} onSelectCategory={setCategory} /></div>
 
           <section id="trainers" className="coaching-section" aria-labelledby="coaching-title">
-            <div className="coaching-image"><img src="/images/media/6456331.jpg" alt="A personal trainer guiding an athlete through an exercise" width="1400" height="1400" loading="lazy" /><span>Coaching in focus</span></div>
+            <div className="coaching-image"><img src="/images/media/6390230.jpg" alt="Two athletes training with skipping ropes in a gym" width="1400" height="1400" loading="lazy" /><span>Coaching in focus</span></div>
             <div className="coaching-copy"><p className="section-caption">Personal training</p><h2 id="coaching-title">YOUR GOALS.<br />A CLEAR PLAN.</h2><p>Learn how to lift with control, train with consistency, and progress at a pace that works for you. Start with technique. Build from there.</p><div className="coach-list">{trainers.map(trainer => <div className="coach-row" key={trainer.name}><h3><a href={`#/coaches/${trainer.id}`}>{trainer.name}</a></h3><span>{trainer.specialty}</span></div>)}</div><p className="sample-note">Illustrative coaching team. Photography shows stock models.</p><a className="text-link" href="#/coaches">Meet the coaching team <span aria-hidden="true">↗</span></a></div>
           </section>
 

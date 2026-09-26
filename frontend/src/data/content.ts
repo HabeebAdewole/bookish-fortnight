@@ -6,21 +6,21 @@ export type Day = (typeof days)[number]
 
 export const trainers = [
   {
-    id: 'amara-okafor', name: 'Amara Okafor', specialty: 'Strength & technique', initials: 'AO', category: 'Strength', image: 'strength.jpg', imageAlt: 'An athlete preparing a barbell lift',
+    id: 'amara-okafor', name: 'Amara Okafor', specialty: 'Strength & technique', initials: 'AO', category: 'Strength',
     description: 'Clear cues. Consistent practice. Strength built one session at a time.',
     approach: 'Amara’s sample programme begins with the foundations: learning the movement, choosing a manageable load, and making each repetition count. Sessions pair focused practice with time for individual feedback.',
     focus: ['Lifting fundamentals', 'Controlled repetitions', 'Steady progression'],
     session: 'A coached warm-up, a focused strength block, and time to review your technique. Expect clear demonstrations and room to ask questions.',
   },
   {
-    id: 'daniel-cole', name: 'Daniel Cole', specialty: 'Conditioning & endurance', initials: 'DC', category: 'Conditioning', image: 'group.jpg', imageAlt: 'Athletes training with dumbbells in a group class',
+    id: 'daniel-cole', name: 'Daniel Cole', specialty: 'Conditioning & endurance', initials: 'DC', category: 'Conditioning',
     description: 'Structured circuits and a pace you can make your own.',
     approach: 'Daniel’s sample sessions combine straightforward movements with timed work and recovery. The emphasis is on finding a repeatable pace, understanding the session, and keeping your training consistent.',
     focus: ['Full-body circuits', 'Pacing and consistency', 'Group training'],
     session: 'Start with a movement briefing, work through a series of coached stations, and finish with a slower recovery block. Each session includes options for different experience levels.',
   },
   {
-    id: 'tomi-adeyemi', name: 'Tomi Adeyemi', specialty: 'Mobility & recovery', initials: 'TA', category: 'Mobility', image: 'mobility.jpg', imageAlt: 'A group practising floor-based mobility on mats',
+    id: 'tomi-adeyemi', name: 'Tomi Adeyemi', specialty: 'Mobility & recovery', initials: 'TA', category: 'Mobility',
     description: 'Make time for movement beyond the weight room.',
     approach: 'Tomi’s sample sessions make space for slower, more deliberate practice. Simple guided sequences bring attention to how you move, with time to settle into each part of the session.',
     focus: ['Guided mobility', 'Floor-based movement', 'Recovery sessions'],
