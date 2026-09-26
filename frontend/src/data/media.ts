@@ -13,26 +13,26 @@ export const galleries = {
     photo(29149073, 'Benches and equipment ready for a training session'),
   ],
   coaches: [
-    photo(13951271, 'An athlete focusing between gym sets'),
+    photo(5878697, 'An athlete standing on the training floor'),
     photo(19025674, 'A rack of dumbbells on a gym floor'),
     photo(7031705, 'Cardio equipment in a bright training space'),
   ],
   'amara-okafor': [
-    photo(6388516, 'An athlete training in a gym'),
-    photo(6455904, 'An athlete lifting a dumbbell'),
+    photo(6389084, 'An athlete working out in a gym'),
+    photo(6388531, 'An athlete stretching before training'),
     photo(4720794, 'An athlete practising a barbell lift'),
   ],
   'daniel-cole': [
-    photo(6455963, 'An athlete working with dumbbells'),
+    photo(6388977, 'An athlete warming up beside the gym equipment'),
     photo(4720518, 'An athlete preparing chalk before lifting'),
   ],
   'tomi-adeyemi': [
-    photo(6303449, 'An athlete practising a seated side stretch'),
-    photo(6303444, 'An athlete stretching on a mat'),
+    photo(6516190, 'An athlete warming up with a standing stretch'),
+    photo(8846583, 'An athlete stretching on a mat'),
   ],
 } satisfies Record<string, Slide[]>
 export const coachPhotos = {
-  'amara-okafor': photo(6455922, 'A coach guiding an athlete through a dumbbell exercise'),
-  'daniel-cole': photo(5878697, 'An athlete standing on the gym floor'),
-  'tomi-adeyemi': photo(6303446, 'An athlete stretching on a studio mat'),
+  'amara-okafor': photo(6388516, 'An athlete focused during a gym session'),
+  'daniel-cole': photo(13951271, 'Portrait of an athlete on the gym floor'),
+  'tomi-adeyemi': photo(6388980, 'An athlete stretching in a gym'),
 }
