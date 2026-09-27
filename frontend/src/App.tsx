@@ -1,3 +1,4 @@
+import { MemberPage } from './pages/MemberPage'
 import { AuthPage } from './pages/AuthPage'
 import { AboutPage, ContactPage } from './pages/ClubPages'
 import { useEffect, useSyncExternalStore } from 'react'
@@ -20,7 +21,8 @@ export default function App() {
   usePageMotion(path)
   const coach = trainers.find(item => path === `/coaches/${item.id}`)
   const authMode = path === '/login' ? 'login' : path === '/signup' ? 'signup' : path === '/reset-password' ? 'reset-password' : null
-  const title = authMode === 'login' ? 'Log in' : authMode === 'signup' ? 'Create an account' : authMode === 'reset-password' ? 'Reset password' : path === '/about' ? 'About the club' : path === '/contact' ? 'Contact' : path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
+  const memberPage = path === '/member' || path === '/member/classes'
+  const title = memberPage ? (path === '/member' ? 'Member overview' : 'Book a class') : authMode === 'login' ? 'Log in' : authMode === 'signup' ? 'Create an account' : authMode === 'reset-password' ? 'Reset password' : path === '/about' ? 'About the club' : path === '/contact' ? 'Contact' : path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
 
   useEffect(() => {
     document.title = `FORM — ${title}`
@@ -36,6 +38,7 @@ export default function App() {
     target?.scrollIntoView({ behavior: 'instant' })
   }, [hash, path])
 
+  if (memberPage) return <PageShell><MemberPage bookingView={path === '/member/classes'} /></PageShell>
   if (authMode) return <PageShell active={authMode === 'login' ? 'login' : undefined}><AuthPage key={authMode} mode={authMode} /></PageShell>
   if (path === '/') return <Home />
   if (path === '/about') return <PageShell active="about"><AboutPage /></PageShell>
