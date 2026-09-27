@@ -39,7 +39,7 @@ export function HeroVideo({ name, source, poster }: { name: string; source?: str
 
   return <div className="hero-video" ref={container}>
     <img className="video-poster" src={poster ?? `/images/media/${name}-poster.jpg`} alt="" fetchPriority={name === 'club' ? 'auto' : 'high'} loading={name === 'club' ? 'lazy' : 'eager'} />
-    <video ref={video} src={automatic ? source ?? `/images/media/${name}.mp4` : undefined} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} className={ready && !failed ? 'video-ready' : ''} onPlaying={() => setReady(true)} onError={() => setFailed(true)} />
+    <video ref={video} src={automatic ? source ?? `/images/media/${name}.mp4` : undefined} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} className={ready && automatic && !failed ? 'video-ready' : ''} onPlaying={() => setReady(true)} onError={() => setFailed(true)} />
   </div>
 }
 
