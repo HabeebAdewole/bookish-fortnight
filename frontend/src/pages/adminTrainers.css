@@ -1,0 +1,11 @@
+.trainer-admin-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.trainer-admin-grid article { overflow-wrap: anywhere; }
+.trainer-admin-grid article > p { margin: 16px 0; }
+.trainer-admin-grid .trainer-state { color: #101112; }
+.trainer-admin-grid .button { width: 100%; }
+.trainer-admin-grid details { margin-top: 24px; }
+.trainer-admin-grid ul { list-style: none; padding: 0; }
+.trainer-admin-grid li { padding: 14px 0; border-bottom: 1px solid #c9ceca; font-size: 14px; }
+.trainer-admin-grid li span { display: block; font-size: 12px; margin-top: 8px; color: #555b59; }
+.schedule-editor textarea { width: 100%; border: 1px solid #858b87; padding: 12px; font: inherit; resize: vertical; }
+@media(max-width: 1050px) { .trainer-admin-grid { grid-template-columns: 1fr; } }
