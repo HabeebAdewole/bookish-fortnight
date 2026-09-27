@@ -1,9 +1,11 @@
+import { AdminTrainers } from './AdminTrainers'
 import { AdminSchedule } from './AdminSchedule'
 import { adminDate, adminMembers, adminPayments, adminRevenue, attendancePeriods, money, visitTotal } from '../data/admin'
 import './admin.css'
 
 export function AdminPage({ path, query }: { path: string; query: string }) {
   const overview = path === '/admin'
+  const staff = path === '/admin/trainers'
   const schedule = path === '/admin/schedule'
   const directory = path === '/admin/members'
   const member = adminMembers.find(item => path === `/admin/members/${item.id}`)
@@ -22,8 +24,9 @@ export function AdminPage({ path, query }: { path: string; query: string }) {
   const weekly = attendancePeriods.map((_, index) => adminMembers.reduce((sum, item) => sum + item.visits[index], 0))
   return <div className="admin-area page-width">
     <div className="member-demo"><strong>Admin demo</strong><p>Fictional records · snapshot through 27 September 2026. No sign-in or admin permissions are enforced. Changes in the member demo do not affect these records.</p></div>
-    <nav className="member-nav" aria-label="Admin navigation"><a href="#/admin" aria-current={overview ? 'page' : undefined}>Overview</a><a href="#/admin/members" aria-current={directory || member ? 'page' : undefined}>Members</a><a href="#/admin/schedule" aria-current={schedule ? 'page' : undefined}>Schedule</a><a href="#/member">Member demo</a><a href="#home">Back to FORM</a></nav>
-    <header className="member-heading"><div><p className="section-caption">Club operations · sample data</p><h1 tabIndex={-1}>{schedule ? 'MAKE ROOM TO MOVE.' : overview ? 'THE CLUB AT A GLANCE.' : directory ? 'PEOPLE MAKE FORM.' : member ? member.name : 'MEMBER NOT FOUND.'}</h1><p>{schedule ? 'Plan the recurring week. Add, adjust or cancel sample sessions.' : overview ? 'A September snapshot of membership, payments and attendance.' : directory ? 'Explore fictional members by name, plan or membership status.' : member ? `${member.id} · Fictional member profile` : 'This record is not part of the demo directory.'}</p></div></header>
+    <nav className="member-nav" aria-label="Admin navigation"><a href="#/admin" aria-current={overview ? 'page' : undefined}>Overview</a><a href="#/admin/members" aria-current={directory || member ? 'page' : undefined}>Members</a><a href="#/admin/schedule" aria-current={schedule ? 'page' : undefined}>Schedule</a><a href="#/admin/trainers" aria-current={staff ? 'page' : undefined}>Trainers</a><a href="#/member">Member demo</a><a href="#home">Back to FORM</a></nav>
+    <header className="member-heading"><div><p className="section-caption">Club operations · sample data</p><h1 tabIndex={-1}>{staff ? 'THE PEOPLE BEHIND THE WORK.' : schedule ? 'MAKE ROOM TO MOVE.' : overview ? 'THE CLUB AT A GLANCE.' : directory ? 'PEOPLE MAKE FORM.' : member ? member.name : 'MEMBER NOT FOUND.'}</h1><p>{staff ? 'Trainer details and weekly assignments.' : schedule ? 'Plan the recurring week. Add, adjust or cancel sample sessions.' : overview ? 'A September snapshot of membership, payments and attendance.' : directory ? 'Explore fictional members by name, plan or membership status.' : member ? `${member.id} · Fictional member profile` : 'This record is not part of the demo directory.'}</p></div></header>
+    {staff && <AdminTrainers />}
     {schedule && <AdminSchedule />}
     {overview && <>
       <section className="admin-metrics" aria-label="September sample totals"><div><p>Total members</p><strong>{adminMembers.length}</strong><span>{adminMembers.filter(item => item.status === 'Active').length} active memberships</span></div><div><p>Net collected · September</p><strong>{money(adminRevenue)}</strong><span>Paid records only; refunded/failed excluded</span></div><div><p>Recorded check-ins</p><strong>{weekly.reduce((sum, count) => sum + count, 0)}</strong><span>1–27 September · all members</span></div></section>
@@ -39,6 +42,6 @@ export function AdminPage({ path, query }: { path: string; query: string }) {
     {member && <>
       <a className="text-link" href="#/admin/members">Back to members</a><div className="admin-detail-grid"><section className="admin-panel"><div className="admin-avatar" aria-hidden="true">{member.name.split(' ').map(part => part[0]).join('')}</div><h2>Member details</h2><dl className="admin-facts"><dt>Demo email</dt><dd>{member.email}</dd><dt>Membership</dt><dd>{member.plan} · {member.status}</dd><dt>Joined</dt><dd>{adminDate(member.joined)}</dd><dt>September check-ins</dt><dd>{visitTotal(member)}</dd></dl><p>Read-only sample record. No real member account or contact action is connected.</p></section><section className="admin-panel"><h2>Attendance record</h2><table className="admin-table"><caption>Sample visits through 27 September</caption><thead><tr><th scope="col">Period</th><th scope="col">Visits</th></tr></thead><tbody>{member.visits.map((value, index) => <tr key={index}><th scope="row">{attendancePeriods[index]}</th><td>{value}</td></tr>)}</tbody></table><h2 className="admin-payment-title">September payment</h2>{adminPayments.filter(payment => payment.memberId === member.id).map(payment => <div className="admin-payment" key={payment.id}><p><strong>{money(payment.amount)}</strong> · {payment.status}</p><p>{payment.id} · {adminDate(payment.date)}</p><p>Sample transaction only. No charge, receipt or invoice exists.</p></div>)}</section></div>
     </>}
-    {!schedule && !overview && !directory && !member && <a className="button button-dark" href="#/admin/members">Return to member directory</a>}
+    {!staff && !schedule && !overview && !directory && !member && <a className="button button-dark" href="#/admin/members">Return to member directory</a>}
   </div>
 }

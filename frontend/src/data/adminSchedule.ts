@@ -1,3 +1,4 @@
+import { readAdminTrainers } from './adminTrainers'
 import { useState } from 'react'
 import { days, trainers, weeklyClasses } from './content'
 export const rooms = ['Strength floor', 'Training studio', 'Movement studio'] as const
@@ -36,6 +37,7 @@ export function useAdminSchedule() {
     catch { setWarning('Browser storage is unavailable. Schedule changes will be lost when this workspace is closed or refreshed.') }
   }
   function save(session: AdminSession) {
+    if (!session.cancelled && !readAdminTrainers().some(item => item.id === session.coachId && item.active)) return 'Choose an active trainer before scheduling or restoring this session.'
     const error = sessionError(session, sessions)
     if (error) return error
     if (!sessions.some(item => item.id === session.id) && sessions.length >= 200) return 'This demo supports up to 200 sessions.'
