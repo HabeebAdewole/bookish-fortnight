@@ -4,7 +4,6 @@ import type { ClassPreview } from './content'
 
 export type DatedSession = ClassPreview & { key: string; date: string; startsAt: number; seats: number }
 const storageKey = 'form.demo-bookings.v1'
-export const demoAllowance = 8
 
 export function upcomingSessions(now = Date.now()): DatedSession[] {
   const watDate = new Date(now + 3600000).toISOString().slice(0, 10)
@@ -28,10 +27,10 @@ export function sessionDate(session: DatedSession) {
 function readBookings(): string[] {
   const raw: unknown = JSON.parse(localStorage.getItem(storageKey) ?? '[]')
   if (!Array.isArray(raw)) return []
-  return [...new Set(raw.filter((key): key is string => typeof key === 'string' && /^\d{4}-\d{2}-\d{2}\|[a-z-]+$/.test(key)))].slice(0, demoAllowance)
+  return [...new Set(raw.filter((key): key is string => typeof key === 'string' && /^\d{4}-\d{2}-\d{2}\|[a-z-]+$/.test(key)))]
 }
 
-export function useDemoBookings() {
+export function useDemoBookings(allowance: number, membershipActive: boolean) {
   const [bookings, setBookings] = useState<string[]>(() => { try { return readBookings() } catch { return [] } })
   const [storageWarning, setStorageWarning] = useState('')
   useEffect(() => {
@@ -48,11 +47,12 @@ export function useDemoBookings() {
     catch { setStorageWarning('Browser storage is unavailable. Changes will last only for this visit.') }
   }
   function book(session: DatedSession, sessions: DatedSession[]) {
+    if (!membershipActive) return 'Resume or reactivate your demo membership before booking.'
     const active = bookings.filter(key => sessions.some(item => item.key === key))
     if (active.includes(session.key)) return 'You already booked this demo class.'
     if (session.startsAt <= Date.now()) return 'This session has started. Refresh to see the next training week.'
     if (!session.seats) return 'This demo class is full. Choose another session.'
-    if (active.length >= demoAllowance) return 'Your demo allowance is used. Cancel a booking to try another class.'
+    if (active.length >= allowance) return 'Your demo allowance is used. Cancel a booking to try another class.'
     if (sessions.some(item => active.includes(item.key) && item.startsAt < session.startsAt + session.duration * 60000 && item.startsAt + item.duration * 60000 > session.startsAt)) return 'This overlaps a class you already booked.'
     save([...active, session.key])
     return `${session.name} booked for ${sessionDate(session)} at ${session.time} WAT. Demo only.`
