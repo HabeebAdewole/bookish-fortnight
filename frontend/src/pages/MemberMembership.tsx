@@ -36,6 +36,7 @@ export function MemberMembership({ membership, bookingCount, update }: Props) {
           <h3>{name}</h3><p className="membership-price">₦{plan.price}<span> / month</span></p><p>{plan.description}</p>
           <ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
           <button className="button button-dark" disabled={selected || overLimit || membership.status !== 'active'} onClick={() => request({ ...membership, plan: name }, `Change to ${name}?`, `Your sample price changes from ₦${current.price} to ₦${plan.price} per month. ${planLimits[name] === Infinity ? 'Unlimited' : planLimits[name]} upcoming demo bookings allowed. Your existing selections stay saved. No payment is taken.`)}>{selected ? 'Current plan' : `Choose ${name}`}</button>
+          <a className="text-link" href={`#/member/checkout?plan=${name}`}>Preview {name} checkout</a>
           {overLimit && !selected && <p className="plan-restriction">Cancel bookings until you have {planLimits[name]} or fewer to select this plan.</p>}
         </article>
       })}</div>

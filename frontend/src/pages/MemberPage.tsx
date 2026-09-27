@@ -3,10 +3,11 @@ import { categories, trainers } from '../data/content'
 import { sessionDate, upcomingSessions, useDemoBookings } from '../data/memberBookings'
 import type { DatedSession } from '../data/memberBookings'
 import { useDemoMembership } from '../data/memberMembership'
+import { MemberCheckout } from './MemberCheckout'
 import { MemberMembership } from './MemberMembership'
 import './member.css'
 
-export function MemberPage({ bookingView, membershipView }: { bookingView: boolean; membershipView: boolean }) {
+export function MemberPage({ bookingView, membershipView, checkoutView, query }: { bookingView: boolean; membershipView: boolean; checkoutView: boolean; query: string }) {
   const [sessions] = useState(upcomingSessions)
   const { membership, update, warning, allowance } = useDemoMembership()
   const active = membership.status === 'active'
@@ -26,14 +27,15 @@ export function MemberPage({ bookingView, membershipView }: { bookingView: boole
   }
   return <div className="member-area page-width">
     <div className="member-demo"><strong>Demo member space</strong><p>No sign-in required. Try booking and cancelling sample classes. This browser stores demo bookings and membership choices; no real reservations are made.</p></div>
-    <nav className="member-nav" aria-label="Member navigation"><a href="#/member" aria-current={!bookingView && !membershipView ? 'page' : undefined}>Overview</a><a href="#/member/classes" aria-current={bookingView ? 'page' : undefined}>Book a class</a><a href="#/member/membership" aria-current={membershipView ? 'page' : undefined}>Membership</a><a href="#home">Back to the club</a></nav>
-    <header className="member-heading"><div><p className="section-caption">Your training, in one place</p><h1 ref={heading} tabIndex={-1}>{membershipView ? 'YOUR PACE. YOUR PLAN.' : bookingView ? 'MAKE YOUR NEXT MOVE.' : 'BUILD YOUR WEEK.'}</h1><p>{membershipView ? 'Manage your demo plan, take a break, or start again when you are ready.' : 'Plan ahead with the next seven days of sample sessions, starting tomorrow. All times WAT (UTC+1).'}</p></div>{!bookingView && !membershipView && <a className="button button-dark" href="#/member/classes">Find a class <span aria-hidden="true">↗</span></a>}</header>
+    <nav className="member-nav" aria-label="Member navigation"><a href="#/member" aria-current={!bookingView && !membershipView && !checkoutView ? 'page' : undefined}>Overview</a><a href="#/member/classes" aria-current={bookingView ? 'page' : undefined}>Book a class</a><a href="#/member/membership" aria-current={membershipView || checkoutView ? 'page' : undefined}>Membership</a><a href="#home">Back to the club</a></nav>
+    <header className="member-heading"><div><p className="section-caption">Your training, in one place</p><h1 ref={heading} tabIndex={-1}>{checkoutView ? 'ONE STEP CLOSER.' : membershipView ? 'YOUR PACE. YOUR PLAN.' : bookingView ? 'MAKE YOUR NEXT MOVE.' : 'BUILD YOUR WEEK.'}</h1><p>{checkoutView ? 'Explore a sample checkout. No card details, real payments or subscriptions.' : membershipView ? 'Manage your demo plan, take a break, or start again when you are ready.' : 'Plan ahead with the next seven days of sample sessions, starting tomorrow. All times WAT (UTC+1).'}</p></div>{!bookingView && !membershipView && !checkoutView && <a className="button button-dark" href="#/member/classes">Find a class <span aria-hidden="true">↗</span></a>}</header>
     {warning && <p className="member-warning" role="alert">{warning}</p>}
     {!active && !membershipView && <p className="member-warning">Your demo membership is {membership.status}. Existing bookings stay saved. <a className="text-link" href="#/member/membership">Manage membership to book again</a></p>}
+    {checkoutView && <MemberCheckout key={query} selectedPlan={new URLSearchParams(query).get('plan')} membership={membership} bookingCount={booked.length} update={update} />}
     {membershipView && <MemberMembership membership={membership} bookingCount={booked.length} update={update} />}
     {storageWarning && <p className="member-warning" role="alert">{storageWarning}</p>}
-    <div className="member-feedback" role="status" aria-live="polite">{message}</div>
-    {!bookingView && !membershipView && <>
+    {!checkoutView && !membershipView && <div className="member-feedback" role="status" aria-live="polite">{message}</div>}
+    {!bookingView && !membershipView && !checkoutView && <>
       <section className="member-metrics" aria-label="Demo membership summary"><div><p>Demo plan</p><h2>{membership.plan}</h2><span>Demo membership · {membership.status}</span></div><div><p>Upcoming bookings</p><h2>{booked.length}</h2><span>In this training week</span></div><div><p>Available demo credits</p><h2>{!active ? 'Unavailable' : Number.isFinite(allowance) ? Math.max(0, allowance - booked.length) : 'Unlimited'} {Number.isFinite(allowance) && active && <small>/ {allowance}</small>}</h2><span>Each booking uses one credit</span></div></section>
       <section className="member-bookings" aria-labelledby="bookings-title"><div className="member-section-heading"><h2 id="bookings-title">Your upcoming classes</h2><a className="text-link" href="#/member/classes">Explore the timetable</a></div>{booked.length ? <ul className="booked-list">{booked.map(session => <li key={session.key}><div><p>{sessionDate(session)} · {session.time} WAT</p><h3>{session.name}</h3><span>{session.duration} min · {session.trainer} · {session.location}</span></div><button className="text-link" onClick={() => requestCancel(session)} aria-label={`Cancel ${session.name} on ${sessionDate(session)}`}>Cancel booking</button></li>)}</ul> : <div className="member-empty"><h3>A little space for your next session.</h3><p>No classes booked yet. Pick a session to start shaping your week.</p><a className="button button-dark" href="#/member/classes">Book your first demo class</a></div>}</section>
       <section className="member-guidance"><div><h2>A routine you can repeat.</h2><p>Mix strength, conditioning, and mobility throughout your week. Explore each coach’s approach before choosing a session.</p></div><a className="text-link" href="#/coaches">Meet the coaches <span aria-hidden="true">↗</span></a></section>
