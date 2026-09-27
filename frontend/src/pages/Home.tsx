@@ -50,7 +50,7 @@ function Home() {
 
           <section className="closing-section page-width"><h2>YOUR NEXT REP<br />STARTS HERE.</h2><a className="button button-dark" href="#/classes">Find your session</a></section>
         </main>
-        <footer className="site-footer"><div className="page-width"><div className="footer-main"><a href="#home" aria-label="FORM home"><img src="/brand/form-wordmark-light.svg" alt="FORM" width="464" height="132" /></a><p>Training with purpose.<br />Progress through practice.</p><nav aria-label="Footer navigation"><a href="#/classes">Classes</a><a href="#/coaches">Coaching</a><a href="#/about">The club</a><a href="#/contact">Contact</a><a href="#/membership">Membership</a></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} FORM</span><p>Portfolio concept. Classes, coaches, facilities, and prices are illustrative.</p><a href="#home">Back to top ↑</a></div></div></footer>
+        <footer className="site-footer"><div className="page-width"><div className="footer-main"><a href="#home" aria-label="FORM home"><img src="/brand/form-wordmark-light.svg" alt="FORM" width="464" height="132" /></a><p>Training with purpose.<br />Progress through practice.</p><nav aria-label="Footer navigation"><a href="#/classes">Classes</a><a href="#/coaches">Coaching</a><a href="#/about">The club</a><a href="#/contact">Contact</a><a href="#/membership">Membership</a><a href="#/login">Log in</a></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} FORM</span><p>Portfolio concept. Classes, coaches, facilities, and prices are illustrative.</p><a href="#home">Back to top ↑</a></div></div></footer>
       </div>
     </>
   )
