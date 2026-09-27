@@ -53,8 +53,32 @@
 .cancel-booking-dialog h2 { font-size: 44px; margin-bottom: 22px; }
 .cancel-booking-dialog p { margin: 15px 0; }
 .cancel-actions { display: flex; gap: 16px; margin-top: 30px; }
+.membership-current { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding: 36px; margin: 28px 0 60px; background: #101112; color: white; }
+.membership-current h2 { font-size: clamp(44px, 5vw, 70px); margin: 12px 0; }
+.membership-current p { margin-bottom: 16px; }
+.membership-status { display: inline-block; border: 1px solid #858b87; padding: 6px 14px; text-transform: capitalize; }
+.membership-price { font-size: 28px; }
+.membership-price span { font-size: 13px; }
+.membership-explainer { max-width: 760px; color: #555b59; margin-bottom: 28px; }
+.membership-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.membership-options article { border: 1px solid #c9ceca; padding: 28px; display: flex; flex-direction: column; gap: 22px; }
+.membership-options .selected-plan { border-top: 4px solid #101112; padding-top: 25px; }
+.membership-options h3 { font: 600 40px/1.1 var(--font-display); }
+.membership-options ul { padding-left: 20px; font-size: 14px; line-height: 1.9; }
+.membership-options .button { margin-top: auto; }
+.membership-options button:disabled { background: #f3f4f2; color: #636967; border-color: #c9ceca; cursor: not-allowed; }
+.plan-restriction { color: #555b59; font-size: 13px; }
+.membership-controls { border-top: 1px solid #c9ceca; margin-top: 60px; padding-top: 35px; }
+.membership-controls h2 { font-size: 42px; }
+.membership-controls p { max-width: 760px; margin: 20px 0 28px; }
+.membership-controls > div { display: flex; align-items: center; gap: 28px; }
+.member-metrics h2 { overflow-wrap: anywhere; }
+@media(max-width: 900px) { .membership-options { grid-template-columns: 1fr; } }
 @media(max-width: 1050px) { .booking-grid { grid-template-columns: repeat(2,1fr); } }
 @media(max-width: 700px) {
+  .membership-current { grid-template-columns: 1fr; padding: 25px; gap: 24px; }
+  .membership-controls > div { align-items: flex-start; flex-direction: column; }
+  .member-nav { flex-wrap: wrap; }
   .member-demo, .member-heading, .member-section-heading, .member-guidance { flex-direction: column; align-items: flex-start; gap: 18px; }
   .member-nav { gap: 18px; }
   .member-nav a { font-size: 12px; }
