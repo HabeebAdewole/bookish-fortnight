@@ -6,9 +6,10 @@ const links = [
   { href: '#/about', label: 'The club', page: 'about' },
   { href: '#/contact', label: 'Contact', page: 'contact' },
   { href: '#/membership', label: 'Membership', page: 'membership' },
+  { href: '#/login', label: 'Log in', page: 'login' },
 ]
 
-export function Header({ active }: { active?: 'classes' | 'coaches' | 'membership' | 'about' | 'contact' }) {
+export function Header({ active }: { active?: 'classes' | 'coaches' | 'membership' | 'about' | 'contact' | 'login' }) {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className="site-header">
