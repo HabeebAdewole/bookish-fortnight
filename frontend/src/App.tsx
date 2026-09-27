@@ -1,3 +1,4 @@
+import { AdminPage } from './pages/AdminPage'
 import { MemberPage } from './pages/MemberPage'
 import { AuthPage } from './pages/AuthPage'
 import { AboutPage, ContactPage } from './pages/ClubPages'
@@ -22,7 +23,8 @@ export default function App() {
   const coach = trainers.find(item => path === `/coaches/${item.id}`)
   const authMode = path === '/login' ? 'login' : path === '/signup' ? 'signup' : path === '/reset-password' ? 'reset-password' : null
   const memberPage = path === '/member' || path === '/member/classes' || path === '/member/membership' || path === '/member/checkout' || path === '/member/profile'
-  const title = memberPage ? (path === '/member' ? 'Member overview' : path === '/member/membership' ? 'Manage membership' : path === '/member/checkout' ? 'Demo checkout' : path === '/member/profile' ? 'Profile and settings' : 'Book a class') : authMode === 'login' ? 'Log in' : authMode === 'signup' ? 'Create an account' : authMode === 'reset-password' ? 'Reset password' : path === '/about' ? 'About the club' : path === '/contact' ? 'Contact' : path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
+  const adminPage = path === '/admin' || path.startsWith('/admin/')
+  const title = adminPage ? (path === '/admin' ? 'Admin overview' : path === '/admin/members' ? 'Admin members' : 'Admin member details') : memberPage ? (path === '/member' ? 'Member overview' : path === '/member/membership' ? 'Manage membership' : path === '/member/checkout' ? 'Demo checkout' : path === '/member/profile' ? 'Profile and settings' : 'Book a class') : authMode === 'login' ? 'Log in' : authMode === 'signup' ? 'Create an account' : authMode === 'reset-password' ? 'Reset password' : path === '/about' ? 'About the club' : path === '/contact' ? 'Contact' : path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
 
   useEffect(() => {
     document.title = `FORM — ${title}`
@@ -38,6 +40,7 @@ export default function App() {
     target?.scrollIntoView({ behavior: 'instant' })
   }, [hash, path])
 
+  if (adminPage) return <PageShell><AdminPage path={path} query={query} /></PageShell>
   if (memberPage) return <PageShell><MemberPage bookingView={path === '/member/classes'} membershipView={path === '/member/membership'} checkoutView={path === '/member/checkout'} profileView={path === '/member/profile'} query={query} /></PageShell>
   if (authMode) return <PageShell active={authMode === 'login' ? 'login' : undefined}><AuthPage key={authMode} mode={authMode} /></PageShell>
   if (path === '/') return <Home />

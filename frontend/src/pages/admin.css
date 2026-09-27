@@ -1,0 +1,45 @@
+.admin-area { padding-block: 32px 90px; }
+.admin-metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid #c9ceca; margin: 28px 0 40px; }
+.admin-metrics > div { padding: 30px; }
+.admin-metrics > div + div { border-left: 1px solid #c9ceca; }
+.admin-metrics p { font-size: 14px; }
+.admin-metrics strong { display: block; font: 700 clamp(38px,4vw,60px)/1.2 var(--font-display); margin: 18px 0; }
+.admin-metrics span { font-size: 12px; color: #555b59; }
+.admin-overview-grid, .admin-detail-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 28px; }
+.admin-panel { border: 1px solid #c9ceca; padding: 30px; }
+.admin-panel h2 { font: 500 26px/1.3 var(--font-sans); margin-bottom: 16px; }
+.admin-panel > p { color: #555b59; font-size: 14px; }
+.admin-bars { display: flex; align-items: end; gap: 24px; margin: 36px 0; }
+.admin-bars > div { flex: 1; text-align: center; min-width: 0; }
+.admin-bars > div > div { background: #101112; margin: 12px auto; max-width: 65px; }
+.admin-bars small { font-size: 12px; display: block; }
+.admin-panel summary { cursor: pointer; padding: 12px 0; }
+.admin-mix, .admin-member-list { list-style: none; padding: 0; margin: 26px 0; }
+.admin-mix li, .admin-member-list li { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid #c9ceca; padding: 20px 0; }
+.admin-mix a, .admin-member-list a, .admin-table a { text-decoration: underline; text-underline-offset: 4px; }
+.admin-member-list span { color: #555b59; font-size: 14px; }
+.admin-recent { margin-top: 28px; }
+.admin-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 20px; margin: 26px 0; }
+.admin-filters label { display: grid; gap: 10px; font-size: 14px; flex: 1; min-width: 180px; }
+.admin-filters label:first-child { flex: 2; }
+.admin-filters input, .admin-filters select { font: inherit; color: #101112; background: white; border: 1px solid #858b87; padding: 14px; min-height: 50px; width: 100%; }
+.admin-result-count { margin-bottom: 20px; font-size: 14px; }
+.admin-table-scroll { overflow-x: auto; border: 1px solid #c9ceca; }
+.admin-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+.admin-table caption { text-align: left; font-size: 12px; color: #555b59; padding: 18px 14px; }
+.admin-table th, .admin-table td { padding: 18px 14px; border-bottom: 1px solid #c9ceca; }
+.admin-table thead { background: #f3f4f2; }
+.admin-table tbody th { font-weight: 500; }
+.admin-table small { display: block; margin-top: 8px; color: #555b59; font-weight: 400; }
+.admin-table-scroll .admin-table { min-width: 780px; }
+.admin-status { display: inline-block; padding: 6px 10px; background: #f3f4f2; }
+.admin-detail-grid { margin-top: 28px; }
+.admin-avatar { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 50%; background: #101112; color: white; font-size: 24px; margin-bottom: 28px; }
+.admin-facts { margin: 28px 0; }
+.admin-facts dt { font-size: 13px; color: #555b59; margin-top: 20px; }
+.admin-facts dd { margin: 8px 0; overflow-wrap: anywhere; }
+.admin-panel .admin-payment-title { margin-top: 35px; }
+.admin-payment p { margin-top: 12px; }
+.admin-payment p:last-child { font-size: 12px; color: #555b59; }
+@media(max-width: 900px) { .admin-overview-grid, .admin-detail-grid { grid-template-columns: 1fr; } }
+@media(max-width: 700px) { .admin-metrics { grid-template-columns: 1fr; } .admin-metrics > div + div { border-left: 0; border-top: 1px solid #c9ceca; } .admin-panel { padding: 22px; } .admin-filters label { min-width: 100%; } .admin-member-list li { flex-direction: column; gap: 10px; } .admin-bars { gap: 10px; } }
