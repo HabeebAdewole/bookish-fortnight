@@ -1,0 +1,5 @@
+.payment-preview { width: min(640px,calc(100% - 32px)); max-height: 90dvh; overflow-y: auto; }
+.payment-preview h2 { font-size: clamp(36px,5vw,52px); margin: 24px 0; }
+.payment-preview > p { margin: 18px 0; font-size: 14px; }
+.payment-preview .invoice-demo-label { background: #f3f4f2; padding: 16px; font-weight: 600; }
+.payment-preview > .button-dark { margin-top: 20px; }
