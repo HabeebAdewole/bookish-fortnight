@@ -14,7 +14,7 @@ const key = 'form.demo-profile.v1'
 export function profileErrors(value: MemberProfile) {
   return {
     name: value.name.trim().length < 2 || value.name.trim().length > 60 ? 'Use a display name between 2 and 60 characters.' : '',
-    email: value.email.trim().length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.email.trim()) ? 'Enter a valid sample email address, such as member@example.com.' : '',
+    email: value.email.trim().length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.email.trim()) ? 'Enter a valid email address, such as member@example.com.' : '',
   }
 }
 
@@ -27,7 +27,7 @@ function readProfile(): MemberProfile {
       const errors = profileErrors(candidate)
       if (!errors.name && !errors.email) return candidate
     }
-  } catch { /* Invalid or unavailable storage uses fictional defaults. */ }
+  } catch { /* Invalid or unavailable storage uses defaults. */ }
   return { ...defaultProfile }
 }
 

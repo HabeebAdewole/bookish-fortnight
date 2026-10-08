@@ -31,14 +31,14 @@ export function MemberCheckout({ selectedPlan, membership, bookingCount, update 
     if (result !== 'idle' && result !== 'processing') feedback.current?.focus()
   }, [result])
 
-  if (!plan) return <section className="member-empty"><h2>Choose a plan first.</h2><p>This checkout link does not include a valid FORM plan.</p><a className="button button-dark" href="#/member/membership">View demo plans</a></section>
+  if (!plan) return <section className="member-empty"><h2>Choose a plan first.</h2><p>This checkout link does not include a valid FORM plan.</p><a className="button button-dark" href="#/member/membership">View plans</a></section>
   const name = plan.name as PlanName
   const blocked = membership.status !== 'active' || bookingCount > planLimits[name]
 
   function submit(event: FormEvent) {
     event.preventDefault()
     if (timer.current !== null || result === 'success' || blocked) return
-    if (!agreed) { setError('Confirm that you understand this is a demo before continuing.'); consent.current?.focus(); return }
+    if (!agreed) { setError('Confirm your selection before continuing.'); consent.current?.focus(); return }
     setError('')
     setResult('processing')
     timer.current = setTimeout(() => {
@@ -57,30 +57,30 @@ export function MemberCheckout({ selectedPlan, membership, bookingCount, update 
   }
 
   if (result === 'success') return <section className="checkout-success" ref={feedback} tabIndex={-1} aria-labelledby="checkout-success-title">
-    <p>Simulation complete</p><h2 id="checkout-success-title">YOU’RE SET TO MOVE.</h2><p>Your demo plan is now {name}. Your existing bookings stay saved.</p>
-    <dl><div><dt>Sample plan price</dt><dd>₦{plan.price} / month</dd></div><div><dt>Amount charged</dt><dd>₦0</dd></div><div><dt>Payment status</dt><dd>Simulated approval</dd></div></dl>
-    <p>No payment was processed, no subscription was purchased, and no receipt or invoice was issued.</p>
-    <div className="checkout-links"><a className="button button-dark" href="#/member/classes">Book a demo class</a><a className="text-link" href="#/member/membership">View membership</a></div>
+    <p>Selection complete</p><h2 id="checkout-success-title">YOU’RE SET TO MOVE.</h2><p>Your plan is now {name}. Your existing bookings stay saved.</p>
+    <dl><div><dt>Plan price</dt><dd>₦{plan.price} / month</dd></div><div><dt>Amount charged</dt><dd>₦0</dd></div><div><dt>Membership status</dt><dd>Active</dd></div></dl>
+
+    <div className="checkout-links"><a className="button button-dark" href="#/member/classes">Book a class</a><a className="text-link" href="#/member/membership">View membership</a></div>
   </section>
 
   return <div className="checkout-layout">
     <form className="checkout-form" onSubmit={submit} noValidate aria-busy={result === 'processing'}>
-      <h2>Try the payment flow</h2><p>Use a sample payment method to explore each outcome. No card details are needed or collected.</p>
-      {blocked && <p className="member-warning" role="alert">{membership.status !== 'active' ? 'Resume or reactivate your demo membership before checking out.' : `This plan allows ${planLimits[name]} upcoming selections. Cancel some bookings or choose a larger plan.`} <a className="text-link" href="#/member/membership">Manage membership</a></p>}
-      <fieldset disabled={result === 'processing'}><legend>Sample payment method</legend>
+      <h2>Confirm your plan</h2><p>Review the details of your membership.</p>
+      {blocked && <p className="member-warning" role="alert">{membership.status !== 'active' ? 'Resume or reactivate your membership before checking out.' : `This plan allows ${planLimits[name]} upcoming selections. Cancel some bookings or choose a larger plan.`} <a className="text-link" href="#/member/membership">Manage membership</a></p>}
+      <fieldset disabled={result === 'processing'}><legend>Payment options</legend>
         {([
-          ['approved', 'Demo card · approved', 'Completes the simulation and applies this plan.'],
-          ['declined', 'Demo card · declined', 'Shows a decline so you can try again.'],
+          ['approved', 'Approved', 'Applies the selected plan.'],
+          ['declined', 'Declined', 'Shows a decline so you can try again.'],
           ['unavailable', 'Service unavailable', 'Shows a temporary failure without changing your plan.'],
         ] as const).map(([value, label, description]) => <label className="checkout-method" key={value}><input type="radio" name="demo-payment" value={value} checked={scenario === value} onChange={() => { setScenario(value); setResult('idle'); setError('') }} /><span><strong>{label}</strong><small>{description}</small></span></label>)}
-        <label className="checkout-consent"><input ref={consent} type="checkbox" checked={agreed} onChange={event => { setAgreed(event.target.checked); setError('') }} aria-invalid={!!error} aria-describedby={error ? 'checkout-error' : undefined} /><span>I understand this is a simulation. No money will be charged; approval applies the selected demo plan immediately.</span></label>
+        <label className="checkout-consent"><input ref={consent} type="checkbox" checked={agreed} onChange={event => { setAgreed(event.target.checked); setError('') }} aria-invalid={!!error} aria-describedby={error ? 'checkout-error' : undefined} /><span>Apply the selected plan to my membership.</span></label>
       </fieldset>
       {error && <p id="checkout-error" role="alert">{error}</p>}
-      {(result === 'declined' || result === 'unavailable') && <div className="checkout-result" role="status" ref={feedback} tabIndex={-1}><h3>{result === 'declined' ? 'Demo payment declined' : 'Demo service unavailable'}</h3><p>Your plan has not changed and nothing was charged. {result === 'declined' ? 'Select the approved demo card to complete the flow.' : 'Try again, or choose the approved demo card to test success.'}</p></div>}
-      <p className="sr-only" role="status">{result === 'processing' ? 'Processing demo payment.' : ''}</p>
-      <button className="button button-dark" disabled={blocked || result === 'processing'} type="submit">{result === 'processing' ? 'Processing demo…' : 'Simulate payment · ₦0 charged'}</button>
+      {(result === 'declined' || result === 'unavailable') && <div className="checkout-result" role="status" ref={feedback} tabIndex={-1}><h3>{result === 'declined' ? 'Payment declined' : 'Service unavailable'}</h3><p>Your plan has not changed and nothing was charged. {result === 'declined' ? 'Choose the approved option to continue.' : 'Try again or choose another option.'}</p></div>}
+      <p className="sr-only" role="status">{result === 'processing' ? 'Processing your selection.' : ''}</p>
+      <button className="button button-dark" disabled={blocked || result === 'processing'} type="submit">{result === 'processing' ? 'Processing…' : 'Confirm selection'}</button>
       <a className="text-link" href="#/member/membership">Back to membership</a>
     </form>
-    <aside className="checkout-summary" aria-labelledby="order-summary-title"><p>Order summary · demo</p><h2 id="order-summary-title">{name}</h2><p>{plan.description}</p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><dl><div><dt>Sample monthly price</dt><dd>₦{plan.price}</dd></div><div><dt>Amount charged today</dt><dd>₦0</dd></div></dl><p>This preview has no renewal date, taxes, proration or billing agreement. Demo class limits apply to upcoming bookings, not monthly attendance.</p><a className="text-link" href="#/member/membership">Choose another plan</a></aside>
+    <aside className="checkout-summary" aria-labelledby="order-summary-title"><p>Order summary</p><h2 id="order-summary-title">{name}</h2><p>{plan.description}</p><ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul><dl><div><dt>Monthly price</dt><dd>₦{plan.price}</dd></div><div><dt>Amount charged today</dt><dd>₦0</dd></div></dl><p>Class limits apply to upcoming bookings.</p><a className="text-link" href="#/member/membership">Choose another plan</a></aside>
   </div>
 }
