@@ -23,7 +23,7 @@ export default function App() {
   const coach = trainers.find(item => path === `/coaches/${item.id}`)
   const authMode = path === '/login' ? 'login' : path === '/signup' ? 'signup' : path === '/reset-password' ? 'reset-password' : null
   const memberPage = path === '/member' || path === '/member/classes' || path === '/member/membership' || path === '/member/checkout' || path === '/member/profile'
-  const adminPage = path === '/admin' || path.startsWith('/admin/')
+  const adminPage = ['/admin', '/admin/members', '/admin/schedule', '/admin/trainers', '/admin/payments'].includes(path) || /^\/admin\/members\/[^/]+$/.test(path)
   const title = adminPage ? (path === '/admin' ? 'Admin overview' : path === '/admin/members' ? 'Admin members' : path === '/admin/schedule' ? 'Admin schedule' : path === '/admin/trainers' ? 'Admin trainers' : path === '/admin/payments' ? 'Admin payments' : 'Admin member details') : memberPage ? (path === '/member' ? 'Member overview' : path === '/member/membership' ? 'Manage membership' : path === '/member/checkout' ? 'Demo checkout' : path === '/member/profile' ? 'Profile and settings' : 'Book a class') : authMode === 'login' ? 'Log in' : authMode === 'signup' ? 'Create an account' : authMode === 'reset-password' ? 'Reset password' : path === '/about' ? 'About the club' : path === '/contact' ? 'Contact' : path === '/membership' ? 'Membership' : path === '/classes' ? 'Class schedule' : path === '/coaches' ? 'Coaching team' : coach?.name ?? (path === '/' ? 'Find your form.' : 'Page not found')
 
   useEffect(() => {
