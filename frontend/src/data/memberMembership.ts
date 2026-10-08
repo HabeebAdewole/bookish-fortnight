@@ -14,7 +14,7 @@ function read(): Membership {
       (value.status === 'active' || value.status === 'paused' || value.status === 'cancelled')) {
       return { plan: value.plan, status: value.status }
     }
-  } catch { /* Unavailable or malformed storage uses the demo default. */ }
+  } catch { /* Unavailable or malformed storage uses the default. */ }
   return initial
 }
 
@@ -31,7 +31,7 @@ export function useDemoMembership() {
     setMembership(next)
     try { localStorage.setItem(key, JSON.stringify(next)); setWarning('') }
     catch { setWarning('Browser storage is unavailable. Membership changes may be lost when you leave or refresh.') }
-    return `Demo membership updated: ${next.plan}, ${next.status}. No payment or billing changes were made.`
+    return `Membership updated: ${next.plan}, ${next.status}.`
   }
   return { membership, update, warning, allowance: planLimits[membership.plan] }
 }

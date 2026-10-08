@@ -15,7 +15,7 @@ export function readAdminTrainers(): AdminTrainer[] {
     if (!Array.isArray(raw) || raw.length !== coaches.length) return seed()
     const valid = raw.every(item => item && typeof item.name === 'string' && typeof item.specialty === 'string' && typeof item.bio === 'string' && typeof item.active === 'boolean' && coaches.some(coach => coach.id === item.id) && !trainerError(item))
     if (valid && new Set(raw.map(item => item.id)).size === coaches.length) return raw
-  } catch { /* Use fictional defaults if storage cannot be read. */ }
+  } catch { /* Use defaults if storage cannot be read. */ }
   return seed()
 }
 export function useAdminTrainers() {

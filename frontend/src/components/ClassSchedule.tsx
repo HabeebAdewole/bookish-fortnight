@@ -16,7 +16,7 @@ export function ClassSchedule({ category, onSelectCategory }: { category: Catego
             <button key={item} onClick={() => onSelectCategory(item)} aria-pressed={category === item} className="filter-button">{item}</button>
           ))}
         </div>
-        <span className="schedule-note">A sample week at FORM</span>
+        <span className="schedule-note">A week at FORM</span>
       </div>
       <p className="sr-only" role="status">{visibleClasses.length} {visibleClasses.length === 1 ? 'class' : 'classes'} shown</p>
       <ul className="class-list">
