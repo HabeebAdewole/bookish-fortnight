@@ -16,8 +16,9 @@ export function MemberPage({ bookingView, membershipView, checkoutView, profileV
   const active = membership.status === 'active'
   const allowanceLabel = Number.isFinite(allowance) ? allowance : 'Unlimited'
   const { bookings, book, cancel, storageWarning } = useDemoBookings(allowance, active)
-  const [category, setCategory] = useState('All classes')
-  const [coach, setCoach] = useState('')
+  const params = new URLSearchParams(query)
+  const [category, setCategory] = useState<string>(() => categories.find(value => value === params.get('category')) ?? 'All classes')
+  const [coach, setCoach] = useState(() => trainers.find(value => value.id === params.get('coach'))?.id ?? '')
   const [message, setMessage] = useState('')
   const [pending, setPending] = useState<DatedSession | null>(null)
   const dialog = useRef<HTMLDialogElement>(null)

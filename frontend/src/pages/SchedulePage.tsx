@@ -23,6 +23,7 @@ function ClassDetails({ session, onClose }: { session: ClassPreview | null; onCl
       <h2 id="detail-title">{session.name}</h2>
       <p className="detail-summary">{session.description}</p>
       <dl className="class-facts"><div><dt>When</dt><dd>{session.day}, {session.time}</dd></div><div><dt>Duration</dt><dd>{session.duration} minutes</dd></div><div><dt>Space</dt><dd>{session.location}</dd></div><div><dt>Equipment</dt><dd>{session.equipment}</dd></div></dl>
+      <a className="button button-dark" href={`#/member/classes?category=${encodeURIComponent(session.category)}&coach=${encodeURIComponent(session.coachId)}`}>Find bookable sessions</a>
       <h3>What to expect</h3><p>{coach.session}</p>
       <a className="detail-coach" href={`#/coaches/${coach.id}`}><span>Your coach<strong>{coach.name}</strong></span><span aria-hidden="true">↗</span></a>
 
