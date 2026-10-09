@@ -1,3 +1,4 @@
+import { readAdminTrainers } from './adminTrainers'
 import { useState } from 'react'
 import { days, trainers, weeklyClasses } from './content'
 export const rooms = ['Strength floor', 'Training studio', 'Movement studio'] as const
@@ -11,7 +12,7 @@ export function sessionError(session: AdminSession, all: AdminSession[]) {
   if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(session.time)) return 'Enter a valid start time.'
   if (!Number.isInteger(session.duration) || session.duration < 15 || session.duration > 180) return 'Duration must be a whole number from 15 to 180 minutes.'
   if (minutes(session.time) + session.duration > 1440) return 'The session must finish by midnight.'
-  if (!Number.isInteger(session.capacity) || session.capacity < 1 || session.capacity > 60 || session.capacity < session.booked) return `Capacity must be a whole number from ${Math.max(1, session.booked)} to 60; existing sample bookings must fit.`
+  if (!Number.isInteger(session.capacity) || session.capacity < 1 || session.capacity > 60 || session.capacity < session.booked) return `Capacity must be a whole number from ${Math.max(1, session.booked)} to 60; existing bookings must fit.`
   if (!session.cancelled) {
     const collision = all.find(item => item.id !== session.id && !item.cancelled && item.day === session.day && minutes(item.time) < minutes(session.time) + session.duration && minutes(item.time) + item.duration > minutes(session.time) && (item.coachId === session.coachId || item.room === session.room))
     if (collision) return `Schedule conflict with ${collision.name} at ${collision.time}: the trainer or room is already in use.`
@@ -36,9 +37,10 @@ export function useAdminSchedule() {
     catch { setWarning('Browser storage is unavailable. Schedule changes will be lost when this workspace is closed or refreshed.') }
   }
   function save(session: AdminSession) {
+    if (!session.cancelled && !readAdminTrainers().some(item => item.id === session.coachId && item.active)) return 'Choose an active trainer before scheduling or restoring this session.'
     const error = sessionError(session, sessions)
     if (error) return error
-    if (!sessions.some(item => item.id === session.id) && sessions.length >= 200) return 'This demo supports up to 200 sessions.'
+    if (!sessions.some(item => item.id === session.id) && sessions.length >= 200) return 'The schedule supports up to 200 sessions.'
     const clean = { ...session, name: session.name.trim() }
     persist(sessions.some(item => item.id === session.id) ? sessions.map(item => item.id === session.id ? clean : item) : [...sessions, clean])
     return ''

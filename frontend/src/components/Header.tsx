@@ -18,7 +18,7 @@ export function Header({ active }: { active?: 'classes' | 'coaches' | 'membershi
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map(link => <a key={link.href} href={link.href} aria-current={active === link.page ? 'page' : undefined}>{link.label}</a>)}
         </nav>
-        <a className="button header-action" href="#/classes">Explore classes</a>
+        <a className="button header-action" href="#/member">Member space</a>
         <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)} onKeyDown={event => { if (event.key === 'Escape') setMenuOpen(false) }}>
           {menuOpen ? 'Close menu' : 'Menu'}<span aria-hidden="true">{menuOpen ? '−' : '+'}</span>
         </button>
@@ -26,6 +26,8 @@ export function Header({ active }: { active?: 'classes' | 'coaches' | 'membershi
           if (event.key === 'Escape') { setMenuOpen(false); document.querySelector<HTMLButtonElement>('.menu-toggle')?.focus() }
         }}>
           {links.map(link => <a key={link.href} href={link.href} aria-current={active === link.page ? 'page' : undefined} onClick={() => setMenuOpen(false)}>{link.label}</a>)}
+          <a href="#/member" onClick={() => setMenuOpen(false)}>Member space</a>
+          <a href="#/admin" onClick={() => setMenuOpen(false)}>Club administration</a>
         </nav>
       </div>
     </header>

@@ -47,15 +47,15 @@ export function useDemoBookings(allowance: number, membershipActive: boolean) {
     catch { setStorageWarning('Browser storage is unavailable. Changes will last only for this visit.') }
   }
   function book(session: DatedSession, sessions: DatedSession[]) {
-    if (!membershipActive) return 'Resume or reactivate your demo membership before booking.'
+    if (!membershipActive) return 'Resume or reactivate your membership before booking.'
     const active = bookings.filter(key => sessions.some(item => item.key === key))
-    if (active.includes(session.key)) return 'You already booked this demo class.'
+    if (active.includes(session.key)) return 'You already booked this class.'
     if (session.startsAt <= Date.now()) return 'This session has started. Refresh to see the next training week.'
-    if (!session.seats) return 'This demo class is full. Choose another session.'
-    if (active.length >= allowance) return 'Your demo allowance is used. Cancel a booking to try another class.'
+    if (!session.seats) return 'This class is full. Choose another session.'
+    if (active.length >= allowance) return 'Your allowance is used. Cancel a booking to try another class.'
     if (sessions.some(item => active.includes(item.key) && item.startsAt < session.startsAt + session.duration * 60000 && item.startsAt + item.duration * 60000 > session.startsAt)) return 'This overlaps a class you already booked.'
     save([...active, session.key])
-    return `${session.name} booked for ${sessionDate(session)} at ${session.time} WAT. Demo only.`
+    return `${session.name} booked for ${sessionDate(session)} at ${session.time} WAT.`
   }
   function cancel(key: string) { save(bookings.filter(item => item !== key)) }
   return { bookings, book, cancel, storageWarning }
