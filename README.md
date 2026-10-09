@@ -132,4 +132,4 @@ Pexels photographs bundled with the app:
 - [8846583](https://www.pexels.com/photo/8846583/)
 - [9958665](https://www.pexels.com/photo/9958665/)
 
-Source-register gap: the original provider links for the legacy `login.jpg` and `signup.jpg` assets have not yet been recovered. Their exact credits remain pending; do not treat this index as a complete media provenance audit.
+Account-entry photography: [`login.jpg`, Pexels 6389858](https://www.pexels.com/photo/6389858/) and [`signup.jpg`, Pexels 33832201](https://www.pexels.com/photo/33832201/). These original mappings were recorded in [the public media register](frontend/public/licenses/media-sources.txt) when the auth pages were added. The public licenses directory also contains both font OFL notices.
