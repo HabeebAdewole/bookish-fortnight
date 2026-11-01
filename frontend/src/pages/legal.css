@@ -1,0 +1,34 @@
+.legal-page { max-width: 980px; }
+.legal-page header { margin-bottom: 44px; }
+.legal-page h1 { font-size: clamp(46px, 7vw, 84px); overflow-wrap: anywhere; }
+.legal-page header > p:last-child { margin-top: 24px; color: #555b59; }
+.legal-page section + section { margin-top: 40px; }
+.legal-page h2 { font: 600 25px/1.3 var(--font-sans); letter-spacing: -.02em; margin-bottom: 16px; }
+.legal-page p + p { margin-top: 16px; }
+.legal-page p { color: #333a36; }
+.legal-page p a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-page table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 14px; table-layout: fixed; }
+.legal-page caption { text-align: left; margin-bottom: 12px; font-weight: 600; }
+.legal-page th, .legal-page td { padding: 16px 12px; border: 1px solid #aab2ad; text-align: left; overflow-wrap: anywhere; vertical-align: top; }
+.legal-footer { padding-block: 28px; border-top: 1px solid #636967; display: flex; gap: 24px; justify-content: space-between; align-items: start; }
+.legal-footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 12px; }
+.legal-footer a { text-decoration: underline; text-underline-offset: 4px; padding-block: 10px; }
+.legal-footer button { color: #fff; background: transparent; border: 1px solid #aab2ad; padding: 12px; font-size: 12px; flex-shrink: 0; }
+.privacy-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+.form-privacy { font-size: 13px; line-height: 1.7; color: #444c47; margin-block: 18px; }
+.form-privacy a { text-decoration: underline; text-underline-offset: 3px; }
+.policy-check { display: flex; gap: 12px; align-items: start; margin-block: 20px; font-size: 14px; }
+.policy-check input { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; }
+.policy-check a { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid #101112; outline-offset: 4px; box-shadow: 0 0 0 7px #fff; }
+.field-error, .profile-error { color: #9b2323; }
+/* Bound text contrast even when a video frame is entirely white. */
+.training-hero .hero-video::after, .film-banner .hero-video::after,
+.coaches-film-hero .hero-video::after, .profile-film-hero .hero-video::after {
+  background: linear-gradient(90deg, #000d, #000b);
+}
+.auth-visual > div { background: #101112e6; padding: 20px; }
+@media(max-width: 700px) { .legal-footer { flex-direction: column; } .legal-page th, .legal-page td { padding: 12px 8px; font-size: 12px; } }
+
+.profile-identity-note { max-width: 380px; font-size: 13px; color: #fff; margin-block: 20px; }
+.coaching-identity-note { color: #e3e7e4; font-size: 13px; margin-block: 20px; }

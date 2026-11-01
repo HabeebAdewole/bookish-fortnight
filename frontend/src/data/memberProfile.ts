@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const trainingFocuses = ['Build strength', 'Improve conditioning', 'Move more freely', 'Find a routine'] as const
+export const trainingFocuses = ['Prefer not to say', 'Build strength', 'Improve conditioning', 'Move more freely', 'Find a routine'] as const
 export type MemberProfile = {
   name: string
   email: string
@@ -8,13 +8,13 @@ export type MemberProfile = {
   reminders: boolean
   clubNews: boolean
 }
-export const defaultProfile: MemberProfile = { name: 'FORM member', email: 'member@example.com', focus: 'Find a routine', reminders: false, clubNews: false }
+export const defaultProfile: MemberProfile = { name: 'FORM member', email: '', focus: 'Prefer not to say', reminders: false, clubNews: false }
 const key = 'form.demo-profile.v1'
 
 export function profileErrors(value: MemberProfile) {
   return {
     name: value.name.trim().length < 2 || value.name.trim().length > 60 ? 'Use a display name between 2 and 60 characters.' : '',
-    email: value.email.trim().length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.email.trim()) ? 'Enter a valid email address, such as member@example.com.' : '',
+    email: value.email.trim() && (value.email.trim().length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.email.trim())) ? 'Enter a valid email address, such as member@example.com.' : '',
   }
 }
 

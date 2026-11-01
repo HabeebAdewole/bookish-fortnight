@@ -12,7 +12,7 @@ function ClassDetails({ session, onClose }: { session: ClassPreview | null; onCl
     else dialog.current?.close()
   }, [session])
   const coach = trainers.find(item => item.id === session?.coachId)
-  return <dialog ref={dialog} className="class-dialog" aria-labelledby="detail-title" onClose={onClose} onClick={event => {
+  return <dialog ref={dialog} className="class-dialog" aria-labelledby={session ? 'detail-title' : undefined} onClose={onClose} onClick={event => {
     if (event.target === event.currentTarget) {
       const box = event.currentTarget.getBoundingClientRect()
       if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) event.currentTarget.close()
