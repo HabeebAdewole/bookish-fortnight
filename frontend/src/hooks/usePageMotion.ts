@@ -1,7 +1,9 @@
+import { useMotionPaused } from '../data/sitePreferences'
 import { useEffect } from 'react'
 
 /** Progressive enhancement: never hide page content behind animation classes. */
 export function usePageMotion(path: string) {
+  const paused = useMotionPaused()
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
     let observer: IntersectionObserver | undefined
@@ -13,7 +15,7 @@ export function usePageMotion(path: string) {
     }
     function start() {
       stop()
-      if (preference.matches) return
+      if (preference.matches || paused) return
       const hero = document.querySelector('.hero-content, .film-banner > .page-width, .coaches-intro, .profile-heading')
       if (hero) {
         const parts = Array.from(hero.querySelectorAll('h1, p, .hero-actions, .button, small')).filter(element => !element.closest('.hero-actions') || element.classList.contains('hero-actions'))
@@ -33,5 +35,5 @@ export function usePageMotion(path: string) {
     start()
     preference.addEventListener('change', start)
     return () => { stop(); preference.removeEventListener('change', start) }
-  }, [path])
+  }, [path, paused])
 }

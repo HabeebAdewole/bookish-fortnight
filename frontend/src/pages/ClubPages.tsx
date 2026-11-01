@@ -31,6 +31,8 @@ export function ContactPage() {
   const [fields, setFields] = useState<Fields>(initial)
   const [errors, setErrors] = useState<Errors>({})
   const [complete, setComplete] = useState(false)
+  const [acknowledged, setAcknowledged] = useState(false)
+  const [privacyError, setPrivacyError] = useState(false)
   const form = useRef<HTMLFormElement>(null)
   const confirmation = useRef<HTMLDivElement>(null)
   function update(key: keyof Fields, value: string) {
@@ -48,6 +50,7 @@ export function ContactPage() {
     setErrors(next)
     const first = Object.keys(next)[0]
     if (first) { form.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus(); return }
+    if (!acknowledged) { setPrivacyError(true); form.current?.querySelector<HTMLInputElement>('#contact-privacy')?.focus(); return }
     setComplete(true)
     requestAnimationFrame(() => confirmation.current?.focus())
   }
@@ -60,8 +63,8 @@ export function ContactPage() {
         <div className="form-pair">{(['name', 'email'] as const).map(key => <div className="form-field" key={key}><label htmlFor={`contact-${key}`}>{key === 'name' ? 'Your name' : 'Email address'}</label><input id={`contact-${key}`} name={key} type={key === 'email' ? 'email' : 'text'} autoComplete={key} value={fields[key]} maxLength={key === 'name' ? 100 : 254} required aria-invalid={!!errors[key]} aria-describedby={errors[key] ? `${key}-error` : undefined} onChange={event => update(key, event.target.value)} />{errors[key] && <p className="field-error" id={`${key}-error`}>{errors[key]}</p>}</div>)}</div>
         <div className="form-field"><label htmlFor="contact-topic">What can we help with?</label><select id="contact-topic" name="topic" required value={fields.topic} aria-invalid={!!errors.topic} aria-describedby={errors.topic ? 'topic-error' : undefined} onChange={event => update('topic', event.target.value)}><option value="">Choose a topic</option><option>Classes and getting started</option><option>Membership plans</option><option>Coaching</option><option>Something else</option></select>{errors.topic && <p className="field-error" id="topic-error">{errors.topic}</p>}</div>
         <div className="form-field"><label htmlFor="contact-message">Your message</label><textarea id="contact-message" name="message" rows={5} maxLength={1500} required value={fields.message} aria-invalid={!!errors.message} aria-describedby={errors.message ? 'message-error' : 'message-hint'} onChange={event => update('message', event.target.value)} /><p id="message-hint" className="form-note">10–1,500 characters. Please leave out sensitive personal information.</p>{errors.message && <p className="field-error" id="message-error">{errors.message}</p>}</div>
-        <button className="button button-dark" type="submit">Review enquiry <span aria-hidden="true">↗</span></button>
-        {complete && <div ref={confirmation} className="enquiry-confirmation" tabIndex={-1} role="status"><h3>Details checked.</h3><p>Your enquiry is ready. You can review or edit your details.</p><button type="button" className="text-link" onClick={() => { setFields(initial); setErrors({}); setComplete(false); form.current?.querySelector<HTMLInputElement>('input')?.focus() }}>Start again</button></div>}
+        <p className="form-privacy">This form checks your enquiry on this device; it does not send or save it. Name, email, topic and message are used only for this check. Leave out health, payment and identity details. <a href="#/privacy">Read the privacy policy</a>.</p><label className="policy-check"><input id="contact-privacy" type="checkbox" checked={acknowledged} aria-invalid={privacyError} aria-describedby={privacyError ? 'contact-privacy-error' : undefined} onChange={event => { setAcknowledged(event.target.checked); setPrivacyError(false) }} /><span>I have read how this form uses my details.</span></label>{privacyError && <p id="contact-privacy-error" role="alert" className="field-error">Read the privacy information and acknowledge it before continuing.</p>}<button className="button button-dark" type="submit">Review enquiry <span aria-hidden="true">↗</span></button>
+        {complete && <div ref={confirmation} className="enquiry-confirmation" tabIndex={-1} role="status"><h3>Details checked.</h3><p>Your enquiry passed the local checks. It has not been sent. You can review or edit your details.</p><button type="button" className="text-link" onClick={() => { setFields(initial); setErrors({}); setComplete(false); setAcknowledged(false); setPrivacyError(false); form.current?.querySelector<HTMLInputElement>('input')?.focus() }}>Start again</button></div>}
       </form>
     </section>
     <section className="contact-questions"><div className="page-width"><div><p className="section-caption">Before your first session</p><h2>A LITTLE<br />MORE CLARITY.</h2></div><div className="contact-faq"><details><summary>Which class should I start with?</summary><p>Explore Strength foundations in the schedule. Each class detail includes the level, duration, and what to expect.</p><a className="text-link" href="#/classes">Explore classes</a></details><details><summary>Where can I compare the plans?</summary><p>The membership page compares the monthly plans and their included sessions.</p><a className="text-link" href="#/membership">View memberships</a></details></div></div></section>

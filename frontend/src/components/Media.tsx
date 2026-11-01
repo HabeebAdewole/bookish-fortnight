@@ -1,9 +1,11 @@
+import { useMotionPaused } from '../data/sitePreferences'
 import { useEffect, useRef, useState } from 'react'
 import type { RefObject } from 'react'
 
 type Connection = EventTarget & { saveData?: boolean }
 
 function useMediaActivity(ref: RefObject<HTMLDivElement | null>) {
+  const paused = useMotionPaused()
   const [inView, setInView] = useState(false)
   const [visible, setVisible] = useState(() => !document.hidden)
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -21,7 +23,7 @@ function useMediaActivity(ref: RefObject<HTMLDivElement | null>) {
     connection?.addEventListener('change', onConnection)
     return () => { observer.disconnect(); motion.removeEventListener('change', onMotion); document.removeEventListener('visibilitychange', onVisibility); connection?.removeEventListener('change', onConnection) }
   }, [connection, ref])
-  return { active: inView && visible, automatic: !reduced && !saveData }
+  return { active: inView && visible, automatic: !reduced && !saveData && !paused }
 }
 
 export function HeroVideo({ name, source, poster }: { name: string; source?: string; poster?: string }) {
@@ -48,13 +50,14 @@ export type Slide = { src: string; alt: string }
 export function PhotoCarousel({ slides, label, className = '' }: { slides: readonly Slide[]; label: string; className?: string }) {
   const container = useRef<HTMLDivElement>(null)
   const { active, automatic } = useMediaActivity(container)
+  const [interacting, setInteracting] = useState(false)
   const [index, setIndex] = useState(0)
   useEffect(() => {
-    if (!automatic || !active) return
+    if (!automatic || !active || interacting || slides.length < 2) return
     const timer = window.setInterval(() => setIndex(value => (value + 1) % slides.length), 6000)
     return () => window.clearInterval(timer)
-  }, [active, automatic, slides.length])
-  return <div ref={container} className={`photo-carousel ${className}`} role="region" aria-roledescription="carousel" aria-label={label}>
+  }, [active, automatic, interacting, slides.length])
+  return <div ref={container} className={`photo-carousel ${className}`} onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false) }} role="region" aria-roledescription="carousel" aria-label={label}>
     <div className="carousel-window">
       <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>{slides.map((slide, position) => <div className="carousel-slide" key={slide.src} aria-hidden={position !== index}><img src={slide.src} alt={slide.alt} loading={active ? 'eager' : 'lazy'} width="1400" height="950" /></div>)}</div>
     </div>
