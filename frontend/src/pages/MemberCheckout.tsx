@@ -65,7 +65,7 @@ export function MemberCheckout({ selectedPlan, membership, bookingCount, update 
 
   return <div className="checkout-layout">
     <form className="checkout-form" onSubmit={submit} noValidate aria-busy={result === 'processing'}>
-      <h2>Confirm your plan</h2><p>Review the details of your membership.</p>
+      <h2>Confirm your plan</h2><p>Review the details of your membership.</p><p className="form-privacy">Payment processing is not connected. These options change local selections only; no money is charged or card details collected. <a href="#/refunds">Refund policy</a> · <a href="#/terms">Terms &amp; conditions</a>.</p>
       {blocked && <p className="member-warning" role="alert">{membership.status !== 'active' ? 'Resume or reactivate your membership before checking out.' : `This plan allows ${planLimits[name]} upcoming selections. Cancel some bookings or choose a larger plan.`} <a className="text-link" href="#/member/membership">Manage membership</a></p>}
       <fieldset disabled={result === 'processing'}><legend>Payment options</legend>
         {([

@@ -1,6 +1,6 @@
 # FORM
 
-A gym frontend exploring the journey from finding a class to managing a training week, with a separate club administration interface.
+FORM is being developed into a gym website and membership platform for a first customer pilot. The current frontend covers finding classes, managing a training week and club administration.
 
 Built by Habeeb Adewole with React, TypeScript, Vite and Tailwind CSS.
 
@@ -17,7 +17,7 @@ No credentials are required to explore the member or admin routes.
 
 ## Scope
 
-This is a frontend portfolio project using fictional records. React state and localStorage support interactive demonstrations. Member and admin datasets are separate: editing the admin schedule does not update public classes or member bookings. There is no authentication, authorization, shared database, live capacity, payment provider, real invoice issuance or email delivery. Account/contact forms validate locally; checkout does not collect cards or charge money. Monthly prices describe the concept; current booking allowances apply to upcoming selections, not monthly billing.
+The current release is a frontend using fictional records while the commercial backend and first gym installation are being prepared. React state and localStorage support interactive demonstrations. Member and admin datasets are separate: editing the admin schedule does not update public classes or member bookings. There is no authentication, authorization, shared database, live capacity, payment provider, real invoice issuance or email delivery. Account/contact forms validate locally; checkout does not collect cards or charge money. Monthly prices describe the concept; current booking allowances apply to upcoming selections, not monthly billing.
 
 ## Run locally
 
@@ -133,3 +133,17 @@ Pexels photographs bundled with the app:
 - [9958665](https://www.pexels.com/photo/9958665/)
 
 Account-entry photography: [`login.jpg`, Pexels 6389858](https://www.pexels.com/photo/6389858/) and [`signup.jpg`, Pexels 33832201](https://www.pexels.com/photo/33832201/). These original mappings were recorded in [the public media register](frontend/public/licenses/media-sources.txt) when the auth pages were added. The public licenses directory also contains both font OFL notices.
+
+## Policies and visitor controls
+
+Privacy, terms, cookies, refunds, service information and privacy/display settings are linked from every footer. These pages describe the current installation; an actual gym must supply approved identity, service terms, pricing, retention and permissions before taking customers. Policy text is not a legal compliance certification.
+
+There are no optional analytics scripts, tracking pixels or third-party embeds in the application. Profile email and training focus are optional. Visitors can export or clear FORM-owned browser records and pause automatic motion in `#/settings`. The footer motion button controls videos, photo rotation and entrance animations; device reduced-motion preferences also apply.
+
+`frontend/vercel.json` configures a restrictive Content Security Policy and other response headers. Vite production preview applies the same headers for testing. New API, payment, analytics or embed integrations require a deliberate allowlist/policy review; current CSP blocks external connections and frames. Verify actual headers and hosting settings on deployment. Vercel Hobby is limited to non-commercial personal use; choose a suitable commercial hosting arrangement for a client installation.
+
+## Frontend accessibility and privacy audit
+
+After building, start `npm run preview -- --host 127.0.0.1 --port 5191` in one terminal. In another, run `npm run audit:frontend` inside `frontend`. The audit uses Playwright with installed Chrome by default and axe-core. Set `FORM_AUDIT_URL` for another local preview URL, or `FORM_BROWSER_CHANNEL` for another installed Chromium channel. It uses an isolated browser context, validates policy routes/forms/storage actions, checks desktop/mobile pages, additional compact/tablet/foldable widths, and writes local evidence under ignored `project-docs/compliance/`.
+
+Automated accessibility results do not replace manual contrast-over-media, keyboard, screen-reader, physical-device and cross-browser testing. Real authentication, server-side access control, shared bookings and payment/refund handling remain release prerequisites.
