@@ -37,3 +37,49 @@
   .auth-back { margin-bottom: 30px; }
   .auth-content h1 { font-size: 55px; }
 }
+
+/* Login uses the available viewport; short/zoomed screens can still scroll naturally. */
+.login-shell { min-height: 100svh; display: flex; flex-direction: column; }
+.login-shell > .site-header, .login-footer { flex-shrink: 0; }
+.login-shell .login-main { flex: 1; display: grid; }
+.auth-login { min-height: 0; }
+.auth-login .auth-visual { min-height: 0; }
+.auth-login .auth-visual > div { bottom: 36px; }
+.auth-login .auth-content { max-width: 600px; padding: 16px clamp(24px, 4vw, 64px); }
+.auth-login .auth-back { margin-bottom: 10px; padding-block: 5px; min-height: 28px; font-size: 13px; }
+.auth-login .section-caption { margin-bottom: 6px; font-size: 12px; }
+.auth-login h1 { font-size: clamp(44px, 4.8vw, 64px); }
+.auth-login .auth-intro { margin: 10px 0 12px; font-size: 14px; }
+.auth-login .form-privacy { margin-block: 10px; font-size: 12px; line-height: 1.5; }
+.auth-login .auth-shortcuts { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.auth-login .auth-shortcuts .text-link { min-height: 28px; padding-block: 5px; font-size: 12px; }
+.auth-login .form-field { margin-top: 12px; }
+.auth-login .form-field label { margin-bottom: 6px; font-size: 13px; }
+.auth-login .form-field input { min-height: 44px; padding: 10px 12px; font-size: 16px; }
+.auth-login .password-input input { padding-right: 75px; }
+.auth-login .auth-forgot { min-height: 28px; margin-top: 8px; padding-block: 5px; font-size: 12px; }
+.auth-login .auth-submit { min-height: 44px; margin-top: 12px; padding-block: 10px; }
+.auth-login .auth-switch { margin-top: 8px; font-size: 13px; line-height: 1.4; }
+.auth-login .auth-switch a { padding-block: 6px; }
+.login-shell .login-footer { padding-block: 0; }
+.login-shell .login-footer .legal-footer { border-top: 0; padding-block: 12px; }
+.login-shell .login-footer .legal-footer nav { justify-content: center; width: 100%; gap: 0 20px; font-size: 12px; }
+.login-shell .login-footer .legal-footer a { min-height: 24px; padding-block: 4px; line-height: 16px; }
+@media(max-width: 800px) {
+  .auth-login .auth-visual { display: none; }
+  .auth-login .auth-content { max-width: 480px; padding: 14px 24px; }
+  .login-shell .login-footer .legal-footer { padding-block: 8px; }
+  .login-shell .login-footer .legal-footer nav { gap: 0 14px; }
+}
+
+.auth-login .auth-meta { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 10px; }
+.auth-login .auth-meta .auth-back, .auth-login .auth-meta .section-caption { margin: 0; }
+@media(max-width: 800px) and (max-height: 740px) {
+  .auth-login .auth-content { padding-block: 7px; }
+  .auth-login .auth-intro { margin-block: 6px 8px; }
+  .auth-login .form-field { margin-top: 8px; }
+  .auth-login .auth-meta .auth-back { min-height: 24px; padding-block: 2px; }
+  .auth-login .auth-shortcuts .text-link { min-height: 24px; padding-block: 2px; }
+  .auth-login .auth-forgot { min-height: 24px; padding-block: 2px; }
+  .auth-login .auth-switch a { padding-block: 4px; }
+}
